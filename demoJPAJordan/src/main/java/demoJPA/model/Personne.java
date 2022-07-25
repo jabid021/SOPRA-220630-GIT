@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="person")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_personne")
+@DiscriminatorColumn(name="type_personne",columnDefinition = "ENUM('form','stag')")
 public abstract class Personne {
 	
 	//OBLIGATOIRE

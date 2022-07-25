@@ -2,34 +2,65 @@ package demoJPA.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 //OBLIGATOIRE
 @Entity
-public class Personne {
+@Table(name="person")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type_personne")
+public abstract class Personne {
 	
 	//OBLIGATOIRE
 	@Id
 	//SEMI-OBLIGATOIRE pour gerer en auto-increment**
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	protected Integer id;
+	
+	//length = 25 meme chose que columnDefinition = "VARCHAR(25)"
+	@Column(length = 25, nullable = false, unique = true)
+	protected String login;
+	
+	@Column(name="mot_de_passe", columnDefinition = "VARCHAR(125)", nullable = false)
+	protected String password;
+	
+	@Column(length = 25, nullable = false)
+	protected String nom;
 	
 	
-	private String login;
-	private String password;
-	private String nom;
-	private String prenom;
-	private int taille;
-	private LocalDate naissance;
-	private double salaire;
+	@Column(columnDefinition = "VARCHAR(35) default 'John'" , nullable = false )
+	protected String prenom;
 	
-	private boolean permis;
-
-	private Civilite civ;
-	private transient Adresse adresse;
+	protected int taille;
+	
+	@Column(nullable = false)
+	protected LocalDate naissance;
+	
+	//Decimal(x,y) => x = lenght, y= nombre deci
+	@Column(columnDefinition = "DECIMAL(7,2)", nullable = false)
+	protected double salaire;
+	
+	@Column(columnDefinition = "bit(1) default 0")
+	protected boolean permis;
+	
+	//permet de stocker la valeur de l'enum et non son index 
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = "ENUM('Homme','Femme','Nb')")
+	protected Civilite civ;
+	
+	@Embedded
+	protected Adresse adresse;
 	
 	
 	//Constructeur vide OBLIGATOIRE + Tous les GETTERS / SETTERS
@@ -142,12 +173,6 @@ public class Personne {
 		this.id = id;
 	}
 
-	@Override
-	public String toString() {
-		return "Personne [id=" + id + ", login=" + login + ", password=" + password + ", nom=" + nom + ", prenom="
-				+ prenom + ", taille=" + taille + ", naissance=" + naissance + ", salaire=" + salaire + ", permis="
-				+ permis + ", civ=" + civ + ", adresse=" + adresse + "]";
-	}
 
 	
 

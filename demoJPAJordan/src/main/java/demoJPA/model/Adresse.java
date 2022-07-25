@@ -1,11 +1,25 @@
 package demoJPA.model;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Adresse {
 
+	@Column(length = 8)
 	private String numero;
+	
+	@Column(length = 25)
 	private String voie;
+	
+	@Column(length = 15)
 	private String cp;
+	
+	@Column(length = 55)
 	private String ville;
+	
+	public Adresse() {
+	}
 	
 	public Adresse(String numero, String voie, String cp, String ville) {
 		this.numero = numero;

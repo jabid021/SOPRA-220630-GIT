@@ -19,7 +19,11 @@ public class Stagiaire extends Personne{
 	//Y => nombre d'ordinateur que peut avoir un stagiaire
 	
 	@OneToOne
+<<<<<<< Updated upstream
 	@JoinColumn(name="id_ordinateur",unique = true)
+=======
+	@JoinColumn(name="id_ordinateur", unique=true)
+>>>>>>> Stashed changes
 	private  Ordinateur ordinateur;
 	
 	

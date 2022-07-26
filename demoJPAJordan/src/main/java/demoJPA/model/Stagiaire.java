@@ -5,54 +5,60 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 @DiscriminatorValue("stag")
 public class Stagiaire extends Personne{
 
-	@Column(name="numero_ordi")
-	private int numeroOrdi;
+
+
+	//X=> nombre de stagiaire que peut avoir un ordinateur
+	//Y => nombre d'ordinateur que peut avoir un stagiaire
+	@OneToOne
+	private  Ordinateur ordinateur;
 	
-	@Column(name="marque_ordi", length = 25)
-	private String marqueOrdi;
+	
+	@ManyToOne
+	private Matiere matiere;
 
 	public Stagiaire() {}
 	
 	public Stagiaire(String login, String password, String nom, String prenom, int taille, LocalDate naissance,
-			double salaire, boolean permis, Civilite civ, Adresse adresse, int numeroOrdi, String marqueOrdi) {
+			double salaire, boolean permis, Civilite civ, Adresse adresse) {
 		super(login, password, nom, prenom, taille, naissance, salaire, permis, civ, adresse);
-		this.numeroOrdi = numeroOrdi;
-		this.marqueOrdi = marqueOrdi;
 	}
 
+	
 
-	public int getNumeroOrdi() {
-		return numeroOrdi;
+	public Ordinateur getOrdinateur() {
+		return ordinateur;
 	}
 
-
-	public void setNumeroOrdi(int numeroOrdi) {
-		this.numeroOrdi = numeroOrdi;
+	public void setOrdinateur(Ordinateur ordinateur) {
+		this.ordinateur = ordinateur;
 	}
 
-
-	public String getMarqueOrdi() {
-		return marqueOrdi;
+	
+	public Matiere getMatiere() {
+		return matiere;
 	}
 
-
-	public void setMarqueOrdi(String marqueOrdi) {
-		this.marqueOrdi = marqueOrdi;
+	public void setMatiere(Matiere matiere) {
+		this.matiere = matiere;
 	}
-
 
 	@Override
 	public String toString() {
 		return "Stagiaire [id=" + id + ", login=" + login + ", password=" + password + ", nom=" + nom + ", prenom="
 				+ prenom + ", taille=" + taille + ", naissance=" + naissance + ", salaire=" + salaire + ", permis="
-				+ permis + ", civ=" + civ + ", adresse=" + adresse + ", numeroOrdi=" + numeroOrdi + ", marqueOrdi="
-				+ marqueOrdi + "]";
+				+ permis + ", civ=" + civ + ", adresse=" + adresse + ", ordinateur=" + ordinateur + ", matiere=" + matiere + "]";
 	}
+
+	
+
+	
 
 
 	

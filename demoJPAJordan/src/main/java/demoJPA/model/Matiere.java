@@ -1,9 +1,14 @@
 package demoJPA.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Matiere {
@@ -15,6 +20,15 @@ public class Matiere {
 	private String libelle;
 	private int code;
 	private int duree;
+	
+	@ManyToMany
+	private List<Outil> outils=new ArrayList();
+	
+	@OneToMany(mappedBy = "matiere")
+	private List<Module> modules;
+	
+	@OneToMany(mappedBy="matiere")
+	private List<Stagiaire> apprenants;
 	
 	public Matiere() {
 	
@@ -57,11 +71,40 @@ public class Matiere {
 	public void setDuree(int duree) {
 		this.duree = duree;
 	}
+	
+
+	public List<Module> getModules() {
+		return modules;
+	}
+
+	public void setModules(List<Module> modules) {
+		this.modules = modules;
+	}
+	
+	
+
+	public List<Stagiaire> getApprenants() {
+		return apprenants;
+	}
+
+	public void setApprenants(List<Stagiaire> apprenants) {
+		this.apprenants = apprenants;
+	}
+
+	public List<Outil> getOutils() {
+		return outils;
+	}
+
+	public void setOutils(List<Outil> outils) {
+		this.outils = outils;
+	}
 
 	@Override
 	public String toString() {
-		return "Matiere [id=" + id + ", libelle=" + libelle + ", code=" + code + ", duree=" + duree + "]";
+		return "Matiere [id=" + id + ", libelle=" + libelle + ", code=" + code + ", duree=" + duree + ", outils="
+				+ outils + ", modules=" + modules + "]";
 	}
+
 
 	
 	

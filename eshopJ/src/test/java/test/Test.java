@@ -18,8 +18,9 @@ public class Test {
 		Adresse a = new Adresse("6","Rue Rougemont","75009","Paris");
 		Client c = new Client("Doe","Jonh",42,LocalDate.parse("1980-11-02"));
 		Fournisseur f = new Fournisseur("Abid","Jordan","AJC");
-		Produit p = new Produit("Formation Java",1800.75);
+		Produit p = new Produit("Formation Java",1800.75,f);
 		
+		c.getAchats().add(p);
 		f.setAdresse(a);
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenceJPA");
@@ -29,9 +30,10 @@ public class Test {
 		em.getTransaction().begin();
 		
 		
-		em.persist(c);
+	
 		em.persist(f);
 		em.persist(p);
+		em.persist(c);
 		
 		em.getTransaction().commit();
 		

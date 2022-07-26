@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -16,11 +17,14 @@ public class Stagiaire extends Personne{
 
 	//X=> nombre de stagiaire que peut avoir un ordinateur
 	//Y => nombre d'ordinateur que peut avoir un stagiaire
+	
 	@OneToOne
+	@JoinColumn(name="id_ordinateur",unique = true)
 	private  Ordinateur ordinateur;
 	
 	
 	@ManyToOne
+	@JoinColumn(name="id_matiere")
 	private Matiere matiere;
 
 	public Stagiaire() {}

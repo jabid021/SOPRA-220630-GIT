@@ -70,13 +70,14 @@ public class Test {
 		
 		em.getTransaction().begin();
 		
-		em.persist(p1);
-		em.persist(p2);
 		em.persist(o1);
 		em.persist(m1);
 		em.persist(m2);
 		em.persist(m3);
 		em.persist(m4);
+		
+		em.persist(p1);
+		em.persist(p2);
 		/*em.persist(simba);
 		em.persist(d);
 		em.persist(chien);
@@ -90,9 +91,10 @@ public class Test {
 		
 		
 		
+		
+		
 		em.close();
 		
-
 		em = emf.createEntityManager();
 		
 		/*List<Personne> zoom = em.createQuery("Select p from Personne p").getResultList();

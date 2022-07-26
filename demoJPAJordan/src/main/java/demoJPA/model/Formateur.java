@@ -6,13 +6,24 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @DiscriminatorValue("form")
 public class Formateur extends Personne{
 	
+	//joinColumns = id maitre = id de la classe actuelle = Formateur
+	//inverseJoinColumns = id esclave = id du type de la liste = Matiere
 	@ManyToMany
+	@JoinTable(
+			name = "formations",
+			joinColumns =@JoinColumn(name="formateur") ,
+			inverseJoinColumns = @JoinColumn(name="matiere"),
+			uniqueConstraints = @UniqueConstraint(columnNames = {"formateur","matiere"})
+			)
 	private List<Matiere> matieres=new ArrayList();
 
 	public Formateur() {}

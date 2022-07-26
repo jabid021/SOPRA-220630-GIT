@@ -10,8 +10,10 @@ import demoJPA.model.Adresse;
 import demoJPA.model.Formateur;
 import demoJPA.model.Matiere;
 import demoJPA.model.Ordinateur;
+import demoJPA.model.Outil;
 import demoJPA.model.Personne;
 import demoJPA.model.Stagiaire;
+import demoJPA.model.Module;
 
 public class Test {
 
@@ -25,6 +27,21 @@ public class Test {
 		Matiere m3= new Matiere("Java Objet",3817,2);
 		Matiere m4 = new Matiere("JPA",8547,4);
 		
+		Outil outil1 = new Outil("Eclipse");
+		Outil outil2 = new Outil("Wamp");
+		Outil outil3 = new Outil("Mamp");
+		Outil outil4 = new Outil("Xamp");
+		
+		
+		m1.getOutils().add(outil1);
+		
+		m2.getOutils().add(outil2);
+		m2.getOutils().add(outil3);
+		m2.getOutils().add(outil4);
+		
+		m3.getOutils().add(outil1);
+		
+		m4.getOutils().add(outil1);
 		
 		
 		Adresse a1 = new Adresse("6","rue rougemont","75009","Paris");
@@ -32,10 +49,10 @@ public class Test {
 		
 		Stagiaire p2 = new Stagiaire("jd","password" ,"Doe", "John", 170, LocalDate.parse("1965-05-01"), 2000.758, false, null, a1);
 		
-		p1.getMatieres().add(m1);
-		p1.getMatieres().add(m2);
-		p1.getMatieres().add(m3);
-		p1.getMatieres().add(m4);
+		Module mod1 = new Module(p1,m1);
+		Module mod2 = new Module(p1,m2);
+		Module mod3= new Module(p1,m3);
+		Module mod4 = new Module(p1,m4);
 		
 		
 		p2.setOrdinateur(o1);
@@ -70,14 +87,28 @@ public class Test {
 		
 		em.getTransaction().begin();
 		
+		em.persist(outil1);
+		em.persist(outil2);
+		em.persist(outil3);
+		em.persist(outil4);
+		
 		em.persist(o1);
 		em.persist(m1);
 		em.persist(m2);
 		em.persist(m3);
 		em.persist(m4);
 		
+		
+		
+		
 		em.persist(p1);
 		em.persist(p2);
+		
+		
+		em.persist(mod1);
+		em.persist(mod2);
+		em.persist(mod3);
+		em.persist(mod4);
 		/*em.persist(simba);
 		em.persist(d);
 		em.persist(chien);

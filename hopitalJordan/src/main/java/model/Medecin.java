@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 @Entity
-@DiscriminatorValue("id_medecin")
 public class Medecin extends Compte {
 
 	private transient int salle;

@@ -17,6 +17,10 @@ public class Medecin extends Compte {
 	private List<Visite> visites = new ArrayList();
 	
 	
+	public Medecin() {
+		
+	}
+
 	public Medecin(int id,String login) {
 		super(login);
 		this.id=id;

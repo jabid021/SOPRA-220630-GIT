@@ -2,6 +2,9 @@ package model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Visite {
 	
 	private int id;
@@ -11,7 +14,7 @@ public class Visite {
 	private double prix=20;
 	private int salle;
 	
-	
+	public  Visite() {}
 	
 	public Visite(int id, Medecin medecin, Patient patient, String dateVisite, double prix, int salle) {
 		this.id = id;

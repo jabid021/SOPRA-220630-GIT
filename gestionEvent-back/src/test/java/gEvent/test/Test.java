@@ -1,23 +1,23 @@
-package test;
+package gEvent.test;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Collections;
 
-import model.Admin;
-import model.Adresse;
-import model.Competition;
-import model.Festival;
-import model.Intervenant;
-import model.Prestation;
-import model.Sport;
-import model.Talent;
-import model.User;
+import gEvent.model.Admin;
+import gEvent.model.Adresse;
+import gEvent.model.Competition;
+import gEvent.model.Festival;
+import gEvent.model.Intervenant;
+import gEvent.model.Prestation;
+import gEvent.model.Sport;
+import gEvent.model.Talent;
+import gEvent.model.User;
 
 public class Test {
 
 	public static void main(String[] args) {
-	
+	/*
 		
 		Admin admin = new Admin("admin","admin123");
 		
@@ -74,7 +74,7 @@ public class Test {
 		System.out.println(festival);
 	
 		
-		
+		*/
 	}
 
 }

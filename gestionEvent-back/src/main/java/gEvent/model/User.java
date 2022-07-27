@@ -1,5 +1,6 @@
-package model;
+package gEvent.model;
 import java.time.LocalDate;
+import java.util.List;
 
 public class User extends Compte{
 	
@@ -8,6 +9,17 @@ public class User extends Compte{
 	private LocalDate naissance;
 	private String telephone;
 	private Adresse adresse;
+	
+	//mappedBy
+	private List<Participation> participations;
+	
+	//mappedBy
+	private List<Spectateur> spectateurs;
+	
+	//mappedBy
+	private List<Competition> gagnants;
+	
+	
 
 	public User(String login, String password, String nom, String prenom, LocalDate naissance, String telephone, Adresse adresse) {
 		super(login, password);
@@ -18,20 +30,6 @@ public class User extends Compte{
 		this.telephone = telephone;
 	}
 	
-	
-	
-	public User(Integer id, String login, String password, String nom, String prenom, LocalDate naissance,
-			String telephone, Adresse adresse) {
-		super(id, login, password);
-		this.nom = nom;
-		this.prenom = prenom;
-		this.naissance = naissance;
-		this.telephone = telephone;
-		this.adresse = adresse;
-	}
-
-
-
 	public String getNom() {
 		return nom;
 	}
@@ -64,11 +62,9 @@ public class User extends Compte{
 	public Adresse getAdresse() {
 		return adresse;
 	}
-	@Override
-	public String toString() {
-		return "User [id="+id+",login=" + login + ", password=" + password + ", nom=" + nom + ", prenom=" + prenom
-				+ ", naissance=" + naissance + ", telephone=" + telephone + ", adresse=" + adresse + "]";
-	}
+	
+	
+	
 	
 	
 }

@@ -1,4 +1,4 @@
-package dao;
+package gEvent.dao;
 
 import java.util.List;
 

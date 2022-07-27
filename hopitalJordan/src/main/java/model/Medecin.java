@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 @DiscriminatorValue("id_medecin")
 public class Medecin extends Compte {
 
-	private int salle;
+	private transient int salle;
 	
 	@OneToMany(mappedBy = "medecin")
 	private List<Visite> visites = new ArrayList();

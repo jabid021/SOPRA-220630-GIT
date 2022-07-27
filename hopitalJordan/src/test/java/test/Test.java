@@ -9,6 +9,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import context.Singleton;
 import dao.IDAOCompte;
 import dao.IDAOPatient;
@@ -260,6 +263,9 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("hopital");
+		emf.close();
+		
 		menuPrincipal();
 
 	}

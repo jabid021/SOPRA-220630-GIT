@@ -3,9 +3,17 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+@Entity
+@DiscriminatorValue("id_medecin")
 public class Medecin extends Compte {
 
 	private int salle;
+	
+	@OneToMany(mappedBy = "medecin")
 	private List<Visite> visites = new ArrayList();
 	
 	

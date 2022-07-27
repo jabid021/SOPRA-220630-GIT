@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -45,10 +46,12 @@ public class Formateur extends Personne{
 
 	@Override
 	public String toString() {
-		return "Formateur [formations=" + formations + ", id=" + id + ", login=" + login + ", password=" + password
-				+ ", nom=" + nom + ", prenom=" + prenom + ", taille=" + taille + ", naissance=" + naissance
-				+ ", salaire=" + salaire + ", permis=" + permis + ", civ=" + civ + ", adresse=" + adresse + "]";
+		return "Formateur [id=" + id + ", login=" + login + ", password=" + password + ", nom=" + nom + ", prenom="
+				+ prenom + ", taille=" + taille + ", naissance=" + naissance + ", salaire=" + salaire + ", permis="
+				+ permis + ", civ=" + civ + ", adresse=" + adresse + "]";
 	}
+
+	
 
 	
 	

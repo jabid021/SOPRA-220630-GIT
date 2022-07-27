@@ -3,11 +3,20 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Medecin extends Compte {
 
-	private int salle;
+	
+	private transient int salle;
+	
+	@OneToMany(mappedBy = "medecin")
 	private List<Visite> visites = new ArrayList();
 	
+	public Medecin() {
+	}
 	
 	public Medecin(int id,String login) {
 		super(login);

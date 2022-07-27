@@ -1,4 +1,4 @@
-package model;
+package gEvent.model;
 
 public enum Talent {
 

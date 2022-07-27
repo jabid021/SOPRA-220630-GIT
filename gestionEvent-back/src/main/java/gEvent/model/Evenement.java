@@ -1,4 +1,4 @@
-package model;
+package gEvent.model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -14,7 +14,10 @@ public abstract class Evenement {
 	protected LocalTime heureDebut;
 	protected LocalTime heureFin;
 	protected double prix;
-	protected List<User> spectateurs = new ArrayList();
+	
+	
+	//mappedBy
+	protected List<Spectateur> spectateurs = new ArrayList();
 	protected Adresse adresse;
 	
 	public Evenement(String libelle, LocalDate dateDebut, LocalDate dateFin, LocalTime heureDebut, LocalTime heureFin,
@@ -29,17 +32,7 @@ public abstract class Evenement {
 	}
 
 	
-	public Evenement(Integer id,String libelle, LocalDate dateDebut, LocalDate dateFin, LocalTime heureDebut, LocalTime heureFin,
-			double prix, Adresse adresse) {
-		this.id=id;
-		this.libelle = libelle;
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
-		this.heureDebut = heureDebut;
-		this.heureFin = heureFin;
-		this.prix = prix;
-		this.adresse = adresse;
-	}
+	
 	
 	public String getLibelle() {
 		return libelle;
@@ -89,11 +82,11 @@ public abstract class Evenement {
 		this.prix = prix;
 	}
 
-	public List<User> getSpectateurs() {
+	public List<Spectateur> getSpectateurs() {
 		return spectateurs;
 	}
 
-	public void setSpectateurs(List<User> spectateurs) {
+	public void setSpectateurs(List<Spectateur> spectateurs) {
 		this.spectateurs = spectateurs;
 	}
 

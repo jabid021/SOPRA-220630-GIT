@@ -1,5 +1,6 @@
 package demoJPA.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -28,7 +29,7 @@ public class DAOPersonne implements IDAOPersonne {
 
 	@Override
 	public List<Personne> findAll() {
-		List<Personne> personnes =null;
+		List<Personne> personnes =new ArrayList();
 		EntityManager em = null;
 		try {
 

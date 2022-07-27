@@ -1,4 +1,4 @@
-package test;
+package gEvent.test;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -7,32 +7,37 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import dao.DAOCompte;
-import dao.DAOEvenement;
-import dao.DAOIntervenant;
-import dao.DAOPrestation;
-import model.Admin;
-import model.Adresse;
-import model.Competition;
-import model.Compte;
-import model.Evenement;
-import model.Festival;
-import model.Intervenant;
-import model.Prestation;
-import model.Sport;
-import model.Talent;
-import model.User;
+import gEvent.context.Singleton;
+import gEvent.dao.IDAOCompte;
+import gEvent.dao.IDAOEvenement;
+import gEvent.dao.IDAOIntervenant;
+import gEvent.dao.IDAOParticipation;
+import gEvent.dao.IDAOPrestation;
+import gEvent.dao.IDAOSpectateur;
+import gEvent.model.Admin;
+import gEvent.model.Adresse;
+import gEvent.model.Competition;
+import gEvent.model.Compte;
+import gEvent.model.Evenement;
+import gEvent.model.Festival;
+import gEvent.model.Intervenant;
+import gEvent.model.Prestation;
+import gEvent.model.Sport;
+import gEvent.model.Talent;
+import gEvent.model.User;
 
 public class App {
 
 	static Compte connected;
-	static DAOCompte daoC = new DAOCompte();
-	static DAOEvenement daoE = new DAOEvenement();
-	static DAOIntervenant daoI = new DAOIntervenant();
-	static DAOPrestation daoP = new DAOPrestation();
+	static IDAOCompte daoC = Singleton.getInstance().getDaoCompte();
+	static IDAOEvenement daoE = Singleton.getInstance().getDaoEvenement();
+	static IDAOIntervenant daoI = Singleton.getInstance().getDaoIntervenant();
+	static IDAOPrestation daoP = Singleton.getInstance().getDaoPrestation();
+	static IDAOSpectateur daoS= Singleton.getInstance().getDaoSpectateur();
+	static IDAOParticipation daoPa= Singleton.getInstance().getDaoParticipation();
 
 
-	public static int saisieInt(String msg) 
+	/*public static int saisieInt(String msg) 
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println(msg);
@@ -347,10 +352,12 @@ public class App {
 			System.out.println(c);
 		}
 
-	}
+	}*/
 	public static void main(String[] args) {
 
-		menuPrincipal();
+		//menuPrincipal();
+		
+		Singleton.getInstance().getEmf().close();
 
 	}
 

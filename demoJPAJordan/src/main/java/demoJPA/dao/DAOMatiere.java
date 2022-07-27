@@ -1,5 +1,6 @@
 package demoJPA.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -28,7 +29,7 @@ public class DAOMatiere implements IDAOMatiere {
 
 	@Override
 	public List<Matiere> findAll() {
-		List<Matiere> matieres =null;
+		List<Matiere> matieres =new ArrayList();
 		EntityManager em = null;
 		try {
 

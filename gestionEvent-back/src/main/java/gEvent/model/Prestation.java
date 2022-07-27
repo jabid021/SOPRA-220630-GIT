@@ -1,4 +1,4 @@
-package model;
+package gEvent.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -23,17 +23,6 @@ public Prestation(LocalDate dateDebut,  LocalTime heureDebut, LocalDate dateFin,
 		this.festival=festival;
 	}
 
-
-public Prestation(Integer id,LocalDate dateDebut,  LocalTime heureDebut, LocalDate dateFin,LocalTime heureFin,
-		Intervenant intervenant,Festival festival) {
-	this.id=id;
-	this.dateDebut = dateDebut;
-	this.dateFin = dateFin;
-	this.heureDebut = heureDebut;
-	this.heureFin = heureFin;
-	this.intervenant = intervenant;
-	this.festival=festival;
-}
 
 
 	public LocalDate getDateDebut() {
@@ -101,11 +90,6 @@ public Prestation(Integer id,LocalDate dateDebut,  LocalTime heureDebut, LocalDa
 	}
 
 
-	@Override
-	public String toString() {
-		return "Prestation [id="+id+", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", heureDebut=" + heureDebut
-				+ ", heureFin=" + heureFin + ", intervenant=" + intervenant + "]";
-	}
 	
 	
 }

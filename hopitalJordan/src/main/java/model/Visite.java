@@ -2,11 +2,11 @@ package model;
 
 import java.time.LocalDate;
 
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Visite {
@@ -15,8 +15,11 @@ public class Visite {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@ManyToOne
 	private Medecin medecin;
+	@ManyToOne
 	private Patient patient;
+	
 	private LocalDate dateVisite;
 	private double prix=20;
 	private int salle;

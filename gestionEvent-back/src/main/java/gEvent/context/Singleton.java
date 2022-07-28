@@ -4,6 +4,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import gEvent.dao.DAOCompte;
+import gEvent.dao.DAOSpectateur;
 import gEvent.dao.IDAOCompte;
 import gEvent.dao.IDAOEvenement;
 import gEvent.dao.IDAOIntervenant;

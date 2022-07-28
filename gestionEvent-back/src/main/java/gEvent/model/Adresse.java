@@ -19,6 +19,7 @@ public class Adresse {
 	private String cp;
 	
 	
+	public Adresse() {}
 	
 	public Adresse(String numero, String voie, String ville, String cp) {
 		this.numero = numero;

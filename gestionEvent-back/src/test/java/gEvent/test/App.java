@@ -21,7 +21,9 @@ import gEvent.model.Compte;
 import gEvent.model.Evenement;
 import gEvent.model.Festival;
 import gEvent.model.Intervenant;
+import gEvent.model.Participation;
 import gEvent.model.Prestation;
+import gEvent.model.Spectateur;
 import gEvent.model.Sport;
 import gEvent.model.Talent;
 import gEvent.model.User;
@@ -83,7 +85,7 @@ public class App {
 		{
 		case 1 : connexion();break;
 		case 2 : inscription();break;
-		case 3 : System.exit(0);
+		case 3 :Singleton.getInstance().getEmf().close(); System.exit(0);break;
 		}
 		menuPrincipal();
 	}
@@ -108,7 +110,7 @@ public class App {
 		Adresse a = new Adresse(numero, voie, ville, cp);
 
 		User u = new User(login,password,nom,prenom,LocalDate.parse(naissance),tel,a);
-		daoC.insert(u);
+		daoC.save(u);
 		System.out.println("Nous vous avons bien inscrit ! ");
 
 	}
@@ -131,7 +133,7 @@ public class App {
 		System.out.println("\nMenu User");
 		System.out.println("1 - Afficher les events");
 		System.out.println("2 - Suivre un evenement");
-		System.out.println("3 - Participer � une competition");
+		System.out.println("3 - Participer à une competition");
 		System.out.println("4 - Se deconnecter");
 
 		int choix=saisieInt("Choisir un menu");
@@ -148,8 +150,9 @@ public class App {
 	public static void participerCompetition() {
 		afficherCompetitions();
 		int idEvent = saisieInt("Saisir l'id de la competition");
-		daoC.insertParticipant(connected.getId(), idEvent);
-
+		Competition compet = (Competition) daoE.findById(idEvent);
+		Participation p = new Participation((User) connected, compet);
+		daoPa.save(p);
 	}
 
 
@@ -157,7 +160,9 @@ public class App {
 	public static void suivreEvenement() {
 		afficherEvents();
 		int idEvent = saisieInt("Saisir l'id de l'event");
-		daoC.insertSpectateur(connected.getId(), idEvent);
+		Evenement evenement = daoE.findById(idEvent);
+		Spectateur spec = new Spectateur((User) connected, evenement);
+		daoS.save(spec);
 	}
 
 
@@ -230,7 +235,7 @@ public class App {
 			i = new Intervenant(nom);
 			i.setTalents(listTalent);
 
-			daoI.insert(i);
+			i=daoI.save(i);
 
 
 		}
@@ -249,7 +254,7 @@ public class App {
 		LocalDate dateFin = LocalDate.parse(saisieString("Saisir la date de fin de la prestation (yyyy-mm-dd)"));
 		Festival f = (Festival) daoE.findById(idEvent);
 		Prestation p = new Prestation( dateDebut, heureDebut, dateFin, heureFin, i, f);
-		daoP.insert(p);
+		daoP.save(p);
 
 
 
@@ -266,11 +271,14 @@ public class App {
 	}
 
 	public static void designerGagnant(Integer idCompetition) {
-
+		Evenement evenement = daoE.findById(idCompetition);
 		afficherParticipants(idCompetition);
 
 		int idGagnant = saisieInt("Saisir l'id du gagnant");
-		daoE.updateGagant(idGagnant, idCompetition);
+		User gagnant = (User) daoC.findById(idGagnant);
+		evenement.setGagant(gagnant);
+	
+		daoE.save(evenement);
 		
 
 
@@ -279,21 +287,23 @@ public class App {
 
 
 	public static void afficherParticipants(Integer idEvent) {
-		List<User> participants = daoC.findParticipants(idEvent);
+		Competition evenement = daoE.findByIdWithParticipations(idEvent);
+		
+		List<Participation> participants = evenement.getParticipations();
 		if(participants.isEmpty()) {System.out.println("Pas de participant");}
-		for(User u  : participants) 
+		for(Participation p  : participants) 
 		{
-			System.out.println(u);
+			System.out.println(p.getUser());
 		}
 
 	}
 
 	public static void afficherSpectateurs(Integer idEvent) {
-		List<User> spectateurs = daoC.findSpectateurs(idEvent);
+		List<Spectateur> spectateurs = daoC.findByIdWithSpectateurs(idEvent);
 		if(spectateurs.isEmpty()) {System.out.println("Pas de spectateur");}
-		for(User u  : spectateurs) 
+		for(Spectateur s  : spectateurs) 
 		{
-			System.out.println(u);
+			System.out.println(s.getUser());
 		}
 	}
 
@@ -328,7 +338,7 @@ public class App {
 		}
 
 
-		daoE.insert(e);
+		daoE.save(e);
 
 	}
 
@@ -356,7 +366,6 @@ public class App {
 	public static void main(String[] args) {
 
 		//menuPrincipal();
-		
 		Singleton.getInstance().getEmf().close();
 
 	}

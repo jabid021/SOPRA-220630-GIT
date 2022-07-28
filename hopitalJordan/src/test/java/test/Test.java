@@ -263,9 +263,13 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
+<<<<<<< HEAD
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("hopital");
+=======
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenceJPA");
 		
+>>>>>>> groupe2
 		emf.close();
 		
 		menuPrincipal();

@@ -39,7 +39,7 @@ public class App {
 	static IDAOParticipation daoPa= Singleton.getInstance().getDaoParticipation();
 
 
-	/*public static int saisieInt(String msg) 
+	public static int saisieInt(String msg) 
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println(msg);
@@ -179,7 +179,7 @@ public class App {
 		{
 		case 1 : creerEvent(); break;
 		case 2 : afficherEvents(); break;
-		case 3 : menuGestionEvent(saisieInt("Saisir l'id de l'event"));break;
+		case 3 : afficherEvents(); menuGestionEvent(saisieInt("Saisir l'id de l'event"));break;
 		case 4 : menuPrincipal(); break;
 		}
 		menuAdmin();
@@ -237,7 +237,6 @@ public class App {
 
 			i=daoI.save(i);
 
-
 		}
 		else 
 		{
@@ -261,9 +260,11 @@ public class App {
 	}
 
 	public static void afficherPrestation(Integer idEvent) {
-		List<Prestation> prestations = daoP.findPrestationsByIdEvent(idEvent);
-		if(prestations.isEmpty()) {System.out.println("Pas de prestation");}
-		for(Prestation p  : prestations) 
+
+
+		Festival f = daoE.findByIdWithPrestations(idEvent);
+		if(f.getPrestations().isEmpty()) {System.out.println("Pas de prestation");}
+		for(Prestation p  : f.getPrestations()) 
 		{
 			System.out.println(p);
 		}
@@ -271,15 +272,21 @@ public class App {
 	}
 
 	public static void designerGagnant(Integer idCompetition) {
-		Evenement evenement = daoE.findById(idCompetition);
-		afficherParticipants(idCompetition);
+		Competition evenement = daoE.findByIdWithParticipations(idCompetition);
 
+		List<Participation> participants = evenement.getParticipants();
+		if(participants.isEmpty()) {System.out.println("Pas de participant");}
+		for(Participation p  : participants) 
+		{
+			System.out.println(p.getUser());
+		}
+		
 		int idGagnant = saisieInt("Saisir l'id du gagnant");
 		User gagnant = (User) daoC.findById(idGagnant);
-		evenement.setGagant(gagnant);
-	
+		evenement.setGagnant(gagnant);
+
 		daoE.save(evenement);
-		
+
 
 
 	}
@@ -288,8 +295,8 @@ public class App {
 
 	public static void afficherParticipants(Integer idEvent) {
 		Competition evenement = daoE.findByIdWithParticipations(idEvent);
-		
-		List<Participation> participants = evenement.getParticipations();
+
+		List<Participation> participants = evenement.getParticipants();
 		if(participants.isEmpty()) {System.out.println("Pas de participant");}
 		for(Participation p  : participants) 
 		{
@@ -299,9 +306,9 @@ public class App {
 	}
 
 	public static void afficherSpectateurs(Integer idEvent) {
-		List<Spectateur> spectateurs = daoC.findByIdWithSpectateurs(idEvent);
-		if(spectateurs.isEmpty()) {System.out.println("Pas de spectateur");}
-		for(Spectateur s  : spectateurs) 
+		Evenement evenement = daoE.findByIdWithSpectateurs(idEvent);
+		if(evenement.getSpectateurs().isEmpty()) {System.out.println("Pas de spectateur");}
+		for(Spectateur s  : evenement.getSpectateurs()) 
 		{
 			System.out.println(s.getUser());
 		}
@@ -362,11 +369,11 @@ public class App {
 			System.out.println(c);
 		}
 
-	}*/
+	}
 	public static void main(String[] args) {
 
-		//menuPrincipal();
-		Singleton.getInstance().getEmf().close();
+		System.out.println(daoI.findAll());
+		menuPrincipal();
 
 	}
 

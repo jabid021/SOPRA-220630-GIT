@@ -17,7 +17,7 @@ public class Spectateur {
 	@ManyToOne
 	private User user;
 	
-	@OneToOne
+	@ManyToOne
 	private Evenement evenement;
 	
 	

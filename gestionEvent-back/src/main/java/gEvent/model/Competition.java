@@ -17,10 +17,6 @@ import javax.persistence.OneToMany;
 @DiscriminatorValue("competition")
 public class Competition extends Evenement {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
-	
 	@Column(columnDefinition = "INT(11)")
 	private User gagnant;
 	
@@ -39,14 +35,6 @@ public class Competition extends Evenement {
 			double prix, Sport sport, Adresse adresse) {
 		super(libelle,dateDebut,dateFin,heureDebut,heureFin,prix,adresse);
 		this.sport = sport;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public User getGagnant() {

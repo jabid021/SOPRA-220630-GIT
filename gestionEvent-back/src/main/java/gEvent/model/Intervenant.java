@@ -8,12 +8,14 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
 @Entity
 public class Intervenant {
@@ -23,12 +25,15 @@ public class Intervenant {
 	private Integer id;
 	private String nom ;
 	
+	@Version
+	private int version;
+	
 	/*@JoinTable(
 			name = "talents")
 	@ElementCollection(fetch = FetchType.EAGER)	
 	@Enumerated(EnumType.STRING)*/
 	
-	@ElementCollection(targetClass = Talent.class)
+	@ElementCollection(targetClass = Talent.class,fetch = FetchType.EAGER)
 	@JoinTable(name = "talents", joinColumns = @JoinColumn(name = "intervenant"))
 	@Column(name = "talent", nullable = false,columnDefinition = "ENUM('Chant','Danse','Mixer','Autre')")
 	@Enumerated(EnumType.STRING)
@@ -79,11 +84,22 @@ public class Intervenant {
 	public void setPrestations(List<Prestation> prestations) {
 		this.prestations = prestations;
 	}
+	
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
 
 	@Override
 	public String toString() {
-		return "Intervenant [id=" + id + ", nom=" + nom + "]";
+		return "Intervenant [id=" + id + ", nom=" + nom + ", talents=" + talents + "]";
 	}
+
+	
 
 	
 

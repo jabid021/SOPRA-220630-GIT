@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import gEvent.context.Singleton;
 import gEvent.model.Compte;
+import gEvent.model.Festival;
 
 public class DAOCompte implements IDAOCompte {
 
@@ -132,22 +133,65 @@ public class DAOCompte implements IDAOCompte {
 		return connected;
 	}
 
+	//Ne sert a rien, on peut deja retrouver dans le DAOSpectateur tous les evenements qu'un user à suivi
 	@Override
 	public Compte findByIdWithSpectateurs(Integer idUser) {
-		// TODO Auto-generated method stub
-		return null;
+		Compte compte =null;
+		EntityManager em = null;
+		try {
+
+			em = Singleton.getInstance().getEmf().createEntityManager();
+			compte = (Compte) em.createQuery("SELECT u from User u  join fetch u.spectateurs where u.id=:id").setParameter("id", idUser).getSingleResult();
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+			if(em!=null) 
+			{
+				em.close();
+			}
+		}
+		return compte;
+
 	}
 
+	//Ne sert a rien, on peut deja retrouver dans le DAOParticipation toutes les competitions auxquelles un user à participé
 	@Override
 	public Compte findByIdWithParticipations(Integer idUser) {
-		// TODO Auto-generated method stub
-		return null;
+		Compte compte =null;
+		EntityManager em = null;
+		try {
+
+			em = Singleton.getInstance().getEmf().createEntityManager();
+			compte = (Compte) em.createQuery("SELECT u from User u  join fetch u.participations where u.id=:id").setParameter("id", idUser).getSingleResult();
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+			if(em!=null) 
+			{
+				em.close();
+			}
+		}
+		return compte;
+	
+		
 	}
 
+	
+	//Ne sert a rien, on peut deja retrouver dans le DAOEvenement toutes les competitions gagnées par un user
 	@Override
 	public Compte findByIdWithGagnants(Integer idUser) {
-		// TODO Auto-generated method stub
-		return null;
+		Compte compte =null;
+		EntityManager em = null;
+		try {
+
+			em = Singleton.getInstance().getEmf().createEntityManager();
+			compte = (Compte) em.createQuery("SELECT u from User u  join fetch u.gagnants where u.id=:id").setParameter("id", idUser).getSingleResult();
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+			if(em!=null) 
+			{
+				em.close();
+			}
+		}
+		return compte;
 	}
 
 }

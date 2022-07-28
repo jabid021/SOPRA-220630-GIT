@@ -26,10 +26,10 @@ public class User extends Compte{
 	@Embedded
 	private Adresse adresse;
 	
-	@OneToMany(mappedBy = "competition")
+	@OneToMany(mappedBy = "user")
 	private List<Participation> participations;
 	
-	@OneToMany(mappedBy = "evenement")
+	@OneToMany(mappedBy = "user")
 	private List<Spectateur> spectateurs;
 	
 	@OneToMany(mappedBy = "gagnant")

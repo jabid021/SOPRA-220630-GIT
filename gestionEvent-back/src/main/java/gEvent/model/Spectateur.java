@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.persistence.Version;
 
 @Entity
 @Table(name="spectateurs",uniqueConstraints = @UniqueConstraint(columnNames = {"id_user","id_evenement"}))
@@ -26,6 +27,8 @@ public class Spectateur {
 	@JoinColumn(name="id_evenement")
 	private Evenement evenement;
 	
+	@Version
+	private int version;
 	
 	public Spectateur() {}
 	
@@ -56,6 +59,16 @@ public class Spectateur {
 
 	public void setEvenement(Evenement evenement) {
 		this.evenement = evenement;
+	}
+	
+	
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	@Override

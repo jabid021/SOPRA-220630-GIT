@@ -142,4 +142,10 @@ public class DAOEvenement implements IDAOEvenement {
 		return null;
 	}
 
+	@Override
+	public List<Competition> findAllByGagnant(Integer idUser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -97,4 +97,10 @@ public class DAOParticipation implements IDAOParticipation {
 
 	}
 
+	@Override
+	public List<Participation> findAllByUser(Integer idUser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

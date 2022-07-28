@@ -105,4 +105,10 @@ public class DAOSpectateur implements IDAOSpectateur{
 	
 	}
 
+	@Override
+	public List<Spectateur> findAllByUser(Integer idUser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

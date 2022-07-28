@@ -101,8 +101,7 @@ public class Matiere {
 
 	@Override
 	public String toString() {
-		return "Matiere [id=" + id + ", libelle=" + libelle + ", code=" + code + ", duree=" + duree + ", outils="
-				+ outils + ", modules=" + modules + "]";
+		return "Matiere [id=" + id + ", libelle=" + libelle + ", code=" + code + ", duree=" + duree + "]";
 	}
 
 

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import eshop.model.Achat;
 import eshop.model.Adresse;
 import eshop.model.Client;
 import eshop.model.Fournisseur;
@@ -20,7 +21,7 @@ public class Test {
 		Fournisseur f = new Fournisseur("Abid","Jordan","AJC");
 		Produit p = new Produit("Formation Java",1800.75,f);
 		
-		c.getAchats().add(p);
+		Achat achat = new Achat(c,p);
 		f.setAdresse(a);
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenceJPA");
@@ -34,6 +35,7 @@ public class Test {
 		em.persist(f);
 		em.persist(p);
 		em.persist(c);
+		em.persist(achat);
 		
 		em.getTransaction().commit();
 		

@@ -1,4 +1,4 @@
-package model;
+package gEvent.model;
 
 public abstract class Compte {
 
@@ -13,16 +13,6 @@ public abstract class Compte {
 		this.password = password;
 	}
 	
-	
-
-
-	public Compte(Integer id, String login, String password) {
-		this.id = id;
-		this.login = login;
-		this.password = password;
-	}
-
-
 
 
 	public String getLogin() {

@@ -12,12 +12,18 @@ import javax.persistence.Table;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+<<<<<<< HEAD
 @DiscriminatorColumn(name="type_compte",columnDefinition = "ENUM('Medecin','Secretaire')")
+=======
+@DiscriminatorColumn(name="type_compte",columnDefinition = "enum('Medecin', 'Secretaire') nullable false")
+@Table(name="compte")
+>>>>>>> groupe2
 public abstract class Compte {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected int id;
+<<<<<<< HEAD
 	
 	@Column(length = 10, nullable = false, unique = true)
 	protected String login;
@@ -30,6 +36,16 @@ public abstract class Compte {
 
 
 
+=======
+	@Column(length = 35,nullable = false)
+	protected String login;
+	@Column(length = 100,nullable = false)
+	protected String password;
+	
+	public Compte() {
+	}
+	
+>>>>>>> groupe2
 	public Compte(String login) {
 		this.login = login;
 	}

@@ -5,15 +5,15 @@ import java.util.LinkedList;
 import dao.IDAOCompte;
 import dao.IDAOPatient;
 import dao.IDAOVisite;
+import dao.jdbc.DAOCompteJDBC;
 import dao.jdbc.DAOPatientJDBC;
 import dao.jdbc.DAOVisiteJDBC;
-import dao.jpa.DAOCompte;
 import model.Patient;
 
 public class Singleton {
 	
 	private LinkedList<Patient> fileAttente = new LinkedList();
-	private IDAOCompte daoC = new DAOCompte();
+	private IDAOCompte daoC = new DAOCompteJDBC();
 	private IDAOPatient daoP = new DAOPatientJDBC();
 	private IDAOVisite daoV = new DAOVisiteJDBC();
 	

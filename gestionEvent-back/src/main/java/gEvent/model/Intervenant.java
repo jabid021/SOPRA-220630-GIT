@@ -1,4 +1,4 @@
-package model;
+package gEvent.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,7 @@ public class Intervenant {
 	private Integer id;
 	private String nom ;
 	
+	
 	private List<Talent> talents = new ArrayList();
 
 	public Intervenant(String nom) {
@@ -15,12 +16,6 @@ public class Intervenant {
 	}
 	
 	
-	public Intervenant(Integer id,String nom) {
-		this.nom = nom;
-		this.id=id;
-	}
-	
-
 	public String getNom() {
 		return nom;
 	}
@@ -49,9 +44,4 @@ public class Intervenant {
 	}
 
 
-	public String toString() {
-		return "Intervenant [id="+id+",nom=" + nom +" a comme talent " + talents + "]";
-	
-	
-}
 }

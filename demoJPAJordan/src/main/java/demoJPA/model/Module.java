@@ -1,6 +1,8 @@
 package demoJPA.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -53,8 +55,10 @@ public class Module {
 
 	@Override
 	public String toString() {
-		return "Module [id=" + id + ", matiere=" + matiere + "]";
+		return "Module [id=" + id + ", formateur=" + formateur + ", matiere=" + matiere + "]";
 	}
+
+	
 
 	
 }

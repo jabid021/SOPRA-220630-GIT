@@ -1,12 +1,25 @@
 package gEvent.model;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Adresse {
 
+	@Column(columnDefinition = "VARCHAR(10)")
 	private String numero;
+	
+	@Column(columnDefinition = "VARCHAR(50)")
 	private String voie;
+	
+	@Column(columnDefinition = "VARCHAR(60)")
 	private String ville;
+	
+	@Column(columnDefinition = "VARCHAR(12)")
 	private String cp;
-
+	
+	
+	
 	public Adresse(String numero, String voie, String ville, String cp) {
 		this.numero = numero;
 		this.voie = voie;

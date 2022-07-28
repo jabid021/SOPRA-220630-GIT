@@ -3,6 +3,7 @@ package gEvent.context;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import gEvent.dao.DAOCompte;
 import gEvent.dao.IDAOCompte;
 import gEvent.dao.IDAOEvenement;
 import gEvent.dao.IDAOIntervenant;
@@ -14,20 +15,18 @@ public class Singleton {
 	
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenceJPA");
 	
-	//private IDAOCompte daoCompte = new DAOCompte();
+	private IDAOCompte daoCompte = new DAOCompte();
 	//private IDAOEvenement daoEvenement= new DAOEvenement();
 	//private IDAOIntervenant daoIntervenant = new DAOIntervenant();
 	//private IDAOParticipation daoParticipation = new DAOParticipation();
 	//private IDAOPrestation daoPrestation = new DAOPrestation();
-	//private IDAOSpectateur daoSpectateur = new DAOSpectateur();
+	private IDAOSpectateur daoSpectateur = new DAOSpectateur();
 	
 	
-	private IDAOCompte daoCompte;
 	private IDAOEvenement daoEvenement;
 	private IDAOIntervenant daoIntervenant; 
 	private IDAOParticipation daoParticipation; 
 	private IDAOPrestation daoPrestation; 
-	private IDAOSpectateur daoSpectateur; 
 	
 	
 	

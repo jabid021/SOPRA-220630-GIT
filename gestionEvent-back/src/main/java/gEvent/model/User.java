@@ -2,24 +2,40 @@ package gEvent.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+@Entity
+@DiscriminatorValue("User")
 public class User extends Compte{
 	
+	@Column(length = 25)
 	private String nom;
+	
+	@Column(length = 25)
 	private String prenom;
+	
 	private LocalDate naissance;
+	
+	@Column(length = 15)
 	private String telephone;
+	
+	@Embedded
 	private Adresse adresse;
 	
-	//mappedBy
+	@OneToMany("competion")
 	private List<Participation> participations;
 	
-	//mappedBy
+	@OneToMany("evenement")
 	private List<Spectateur> spectateurs;
 	
-	//mappedBy
+	@OneToMany("gagnant")
 	private List<Competition> gagnants;
 	
-	
+	public User(){}
 
 	public User(String login, String password, String nom, String prenom, LocalDate naissance, String telephone, Adresse adresse) {
 		super(login, password);

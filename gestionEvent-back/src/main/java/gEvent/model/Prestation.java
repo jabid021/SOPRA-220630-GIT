@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -26,6 +27,7 @@ public class Prestation {
 	@JoinColumn(name="id_intervenant")
 	private Intervenant intervenant;
 	
+	@OneToMany
 	@JoinColumn(name="id_festival")
 	private Festival festival; 
 	

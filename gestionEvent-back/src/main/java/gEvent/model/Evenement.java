@@ -4,20 +4,40 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Evenement {
-
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	protected Integer id;
 	protected String libelle;
-	protected LocalDate dateDebut;	
+	@Column(name = "date_debut")
+	protected LocalDate dateDebut;
+	@Column(name= "date_fin")
 	protected LocalDate dateFin;
+	@Column(name="heure_debut")
 	protected LocalTime heureDebut;
+	@Column(name="heure_fin")
 	protected LocalTime heureFin;
 	protected double prix;
 	
 	
 	//mappedBy
+	@OneToMany(mappedBy = "evenement")
 	protected List<Spectateur> spectateurs = new ArrayList();
+	
+	@Embedded
 	protected Adresse adresse;
 	
 	public Evenement(String libelle, LocalDate dateDebut, LocalDate dateFin, LocalTime heureDebut, LocalTime heureFin,
@@ -32,6 +52,9 @@ public abstract class Evenement {
 	}
 
 	
+	public Evenement() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	public String getLibelle() {
@@ -107,7 +130,4 @@ public abstract class Evenement {
 	public void setId(Integer id) {
 		this.id = id;
 	}	
-	
-	
-	
 }

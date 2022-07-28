@@ -99,8 +99,20 @@ public class DAOParticipation implements IDAOParticipation {
 
 	@Override
 	public List<Participation> findAllByUser(Integer idUser) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Participation> participations = new ArrayList();
+		EntityManager em = null;
+		try {
+
+			em = Singleton.getInstance().getEmf().createEntityManager();
+			participations = em.createQuery("SELECT p from Participation p where p.user.id=:id").setParameter("id", idUser).getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+		return participations;
 	}
 
 }

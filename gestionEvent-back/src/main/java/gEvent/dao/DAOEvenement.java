@@ -126,26 +126,74 @@ public class DAOEvenement implements IDAOEvenement {
 
 	@Override
 	public Competition findByIdWithParticipations(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Competition competition =null;
+		EntityManager em = null;
+		try {
+
+			em = Singleton.getInstance().getEmf().createEntityManager();
+			competition = (Competition) em.createQuery("SELECT c from Competition c join fetch c.participants where c.id=:id").setParameter("id", id).getSingleResult();
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+			if(em!=null) 
+			{
+				em.close();
+			}
+		}
+		return competition;
 	}
 
 	@Override
 	public Evenement findByIdWithSpectateurs(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Evenement evenement =null;
+		EntityManager em = null;
+		try {
+
+			em = Singleton.getInstance().getEmf().createEntityManager();
+			evenement = (Evenement) em.createQuery("SELECT e from Evenement e join fetch e.spectateurs where e.id=:id").setParameter("id", id).getSingleResult();
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+			if(em!=null) 
+			{
+				em.close();
+			}
+		}
+		return evenement;
 	}
 
 	@Override
 	public Festival findByIdWithPrestations(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Festival festival =null;
+		EntityManager em = null;
+		try {
+
+			em = Singleton.getInstance().getEmf().createEntityManager();
+			festival = (Festival) em.createQuery("SELECT f from Festival f join fetch f.prestations where f.id=:id").setParameter("id", id).getSingleResult();
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+			if(em!=null) 
+			{
+				em.close();
+			}
+		}
+		return festival;
 	}
 
 	@Override
 	public List<Competition> findAllByGagnant(Integer idUser) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Competition> competitions =new ArrayList();
+		EntityManager em = null;
+		try {
+
+			em = Singleton.getInstance().getEmf().createEntityManager();
+			competitions = em.createQuery("SELECT c from Competition c where c.gagnant.id=:id").setParameter("id", idUser).getResultList();
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+			if(em!=null) 
+			{
+				em.close();
+			}
+		}
+		return competitions;
 	}
 
 }

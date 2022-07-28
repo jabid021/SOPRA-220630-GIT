@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Version;
 
 @Entity
 public class Prestation {
@@ -35,6 +36,10 @@ public class Prestation {
 	@ManyToOne
 	@JoinColumn(name="id_festival")
 	private Festival festival; 
+	
+	
+	@Version
+	private int version;
 	
 	public Prestation() {
 		
@@ -114,6 +119,21 @@ public class Prestation {
 
 	public void setFestival(Festival festival) {
 		this.festival = festival;
+	}
+
+	
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	@Override
+	public String toString() {
+		return "Prestation [id=" + id + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", heureDebut="
+				+ heureDebut + ", heureFin=" + heureFin + ", intervenant=" + intervenant + "]";
 	}
 
 

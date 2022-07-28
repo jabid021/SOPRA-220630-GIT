@@ -136,7 +136,7 @@ public class App {
 		System.out.println("3 - Participer à une competition");
 		System.out.println("4 - Voir toutes mes participations");
 		System.out.println("5 - Voir tous les evenements en tant que spectateur");
-		System.out.println("6 - Voir toutes les competiotions gagnées");
+		System.out.println("6 - Voir toutes les competitions gagnées");
 		System.out.println("7 - Se deconnecter");
 
 		int choix=saisieInt("Choisir un menu");
@@ -165,7 +165,7 @@ public class App {
 
 	public static void showSpectateurs() {
 		List<Spectateur> spectateurs = daoS.findAllByUser(connected.getId());
-		System.out.println("Evenement auquels j'ai assité :");
+		System.out.println("Evenement auxquels j'ai assité :");
 		if(spectateurs.isEmpty()) {System.out.println("Aucun evenement...");}
 		for(Spectateur s : spectateurs) 
 		{
@@ -175,7 +175,7 @@ public class App {
 
 	public static void showParticipations() {
 		List<Participation> participations = daoPa.findAllByUser(connected.getId());
-		System.out.println("Competitions auquels j'ai participé  :");
+		System.out.println("Competitions auxquelles j'ai participé  :");
 		if(participations.isEmpty()) {System.out.println("Aucune competition...");}
 		for(Participation p : participations) 
 		{
@@ -397,6 +397,7 @@ public class App {
 
 	}
 
+	
 	public static void afficherCompetitions() {
 		List<Competition> events = daoE.findAllCompetition();
 		if(events.isEmpty()) {System.out.println("Aucun evenement");}
@@ -404,12 +405,19 @@ public class App {
 		{
 			System.out.println(c);
 		}
-
 	}
 	public static void main(String[] args) {
 
-		System.out.println(daoI.findAll());
-		menuPrincipal();
+		Compte c = daoC.findById(2);
+	
+		c.setLogin("exemple3");
+		
+		saisieInt("attente...");
+		
+		daoC.save(c);
+		
+		
+		//menuPrincipal();
 
 	}
 

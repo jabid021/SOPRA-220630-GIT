@@ -107,8 +107,20 @@ public class DAOSpectateur implements IDAOSpectateur{
 
 	@Override
 	public List<Spectateur> findAllByUser(Integer idUser) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Spectateur> spectateur = new ArrayList();
+		EntityManager em = null;
+		try {
+
+			em = Singleton.getInstance().getEmf().createEntityManager();
+			spectateur = em.createQuery("SELECT s from Spectateur s where s.user.id=:id").setParameter("id", idUser).getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+		return spectateur;
 	}
 
 }

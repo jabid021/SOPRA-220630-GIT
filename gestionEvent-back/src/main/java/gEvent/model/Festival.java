@@ -32,6 +32,13 @@ public class Festival extends Evenement {
 	public void setPrestations(List<Prestation> prestations) {
 		this.prestations = prestations;
 	}
+
+	@Override
+	public String toString() {
+		return "Festival [id=" + id + ", libelle=" + libelle + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin
+				+ ", heureDebut=" + heureDebut + ", heureFin=" + heureFin + ", prix=" + prix + ", adresse=" + adresse
+				+ "]";
+	}
 	
 	
 

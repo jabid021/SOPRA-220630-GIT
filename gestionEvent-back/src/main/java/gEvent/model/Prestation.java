@@ -3,12 +3,13 @@ package gEvent.model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -18,16 +19,20 @@ public class Prestation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Column(name="date_debut")
 	private LocalDate dateDebut;
+	@Column(name="date_fin")
 	private LocalDate dateFin;
+	@Column(name="heure_debut")
 	private LocalTime heureDebut;
+	@Column(name="heure_fin")
 	private LocalTime heureFin;
 	
 	@OneToOne
 	@JoinColumn(name="id_intervenant")
 	private Intervenant intervenant;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="id_festival")
 	private Festival festival; 
 	

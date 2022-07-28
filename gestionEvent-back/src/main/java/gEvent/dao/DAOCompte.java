@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 import gEvent.context.Singleton;
 import gEvent.model.Compte;
@@ -108,6 +109,44 @@ public class DAOCompte implements IDAOCompte {
 
 	@Override
 	public Compte seConnecter(String login, String password) {
+		Compte connected = null;
+		EntityManager em = null;
+		try {
+
+			em = Singleton.getInstance().getEmf().createEntityManager();
+			Query q = em.createQuery("SELECT c from Compte c where c.login=:log and c.password=:pass");
+			q.setParameter("log", login);
+			q.setParameter("pass",password);
+			
+			connected= (Compte) q.getSingleResult();
+		
+			//connected=(Compte) em.createQuery("SELECT c from Compte c where c.login=:log and c.password=:pass").setParameter("log", login).setParameter("pass",password).getSingleResult();
+			
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+			if(em!=null) 
+			{
+				em.close();
+			}
+		}
+		return connected;
+	}
+
+	@Override
+	public Compte findByIdWithSpectateurs(Integer idUser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Compte findByIdWithParticipations(Integer idUser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Compte findByIdWithGagnants(Integer idUser) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -26,13 +26,13 @@ public class User extends Compte{
 	@Embedded
 	private Adresse adresse;
 	
-	@OneToMany("competion")
+	@OneToMany(mappedBy = "competition")
 	private List<Participation> participations;
 	
-	@OneToMany("evenement")
+	@OneToMany(mappedBy = "evenement")
 	private List<Spectateur> spectateurs;
 	
-	@OneToMany("gagnant")
+	@OneToMany(mappedBy = "gagnant")
 	private List<Competition> gagnants;
 	
 	public User(){}
@@ -77,6 +77,37 @@ public class User extends Compte{
 	
 	public Adresse getAdresse() {
 		return adresse;
+	}
+
+	
+	public List<Participation> getParticipations() {
+		return participations;
+	}
+
+	public void setParticipations(List<Participation> participations) {
+		this.participations = participations;
+	}
+
+	public List<Spectateur> getSpectateurs() {
+		return spectateurs;
+	}
+
+	public void setSpectateurs(List<Spectateur> spectateurs) {
+		this.spectateurs = spectateurs;
+	}
+
+	public List<Competition> getGagnants() {
+		return gagnants;
+	}
+
+	public void setGagnants(List<Competition> gagnants) {
+		this.gagnants = gagnants;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", naissance=" + naissance + ", telephone="
+				+ telephone + ", adresse=" + adresse + "]";
 	}
 	
 	

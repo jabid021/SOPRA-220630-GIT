@@ -1,24 +1,29 @@
 package gEvent.model;
 
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(name="participants",uniqueConstraints = @UniqueConstraint(columnNames = {"id_user","id_competition"}))
 public class Participation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@OneToMany
+	@ManyToOne
+	@JoinColumn(name="id_user")
 	private User user;
 
-	@OneToMany
-	private Competition competion;
+	@ManyToOne
+	@JoinColumn(name="id_competition")
+	private Competition competition;
 
 	public Participation() {
 
@@ -26,7 +31,7 @@ public class Participation {
 
 	public Participation(User user, Competition competion) {
 		this.user = user;
-		this.competion = competion;
+		this.competition = competion;
 	}
 
 	public Integer getId() {
@@ -37,8 +42,8 @@ public class Participation {
 		return user;
 	}
 
-	public Competition getCompetion() {
-		return competion;
+	public Competition getCompetition() {
+		return competition;
 	}
 
 	public void setId(Integer id) {
@@ -49,13 +54,13 @@ public class Participation {
 		this.user = user;
 	}
 
-	public void setCompetion(Competition competion) {
-		this.competion = competion;
+	public void setCompetition(Competition competition) {
+		this.competition = competition;
 	}
 
 	@Override
 	public String toString() {
-		return "Participation [id=" + id + ", user=" + user + ", competion=" + competion + "]";
+		return "Participation [id=" + id + ", user=" + user + ", competition=" + competition + "]";
 	}
 
 	

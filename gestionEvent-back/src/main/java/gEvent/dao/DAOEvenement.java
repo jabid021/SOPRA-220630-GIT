@@ -9,6 +9,7 @@ import javax.persistence.EntityTransaction;
 import gEvent.context.Singleton;
 import gEvent.model.Competition;
 import gEvent.model.Evenement;
+import gEvent.model.Festival;
 
 
 public class DAOEvenement implements IDAOEvenement {
@@ -131,6 +132,12 @@ public class DAOEvenement implements IDAOEvenement {
 
 	@Override
 	public Evenement findByIdWithSpectateurs(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Festival findByIdWithPrestations(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

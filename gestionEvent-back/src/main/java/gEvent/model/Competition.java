@@ -9,13 +9,15 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 @Entity
 @DiscriminatorValue("competition")
 public class Competition extends Evenement {
 	
-	@Column(columnDefinition = "INT(11)")
+	@ManyToOne
+	@JoinColumn(name="gagnant")
 	private User gagnant;
 	
 	@OneToMany(mappedBy = "competition")
@@ -62,6 +64,13 @@ public class Competition extends Evenement {
 
 	public void setSport(Sport sport) {
 		this.sport = sport;
+	}
+
+	@Override
+	public String toString() {
+		return "Competition [id=" + id + ", libelle=" + libelle + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin
+				+ ", heureDebut=" + heureDebut + ", heureFin=" + heureFin + ", prix=" + prix + ", adresse=" + adresse
+				+ ", gagnant=" + gagnant + ", sport=" + sport + "]";
 	}
 
 

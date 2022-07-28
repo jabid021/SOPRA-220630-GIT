@@ -5,6 +5,7 @@ import javax.persistence.Persistence;
 
 import gEvent.dao.DAOIntervenant;
 import gEvent.dao.DAOParticipation;
+import gEvent.dao.DAOPrestation;
 import gEvent.dao.IDAOCompte;
 import gEvent.dao.IDAOEvenement;
 import gEvent.dao.IDAOIntervenant;
@@ -20,7 +21,7 @@ public class Singleton {
 	//private IDAOEvenement daoEvenement= new DAOEvenement();
 	private IDAOIntervenant daoIntervenant = new DAOIntervenant();
 	private IDAOParticipation daoParticipation = new DAOParticipation();
-	//private IDAOPrestation daoPrestation = new DAOPrestation();
+	private IDAOPrestation daoPrestation = new DAOPrestation();
 	//private IDAOSpectateur daoSpectateur = new DAOSpectateur();
 	
 	
@@ -28,7 +29,7 @@ public class Singleton {
 	private IDAOEvenement daoEvenement;
 	//private IDAOIntervenant daoIntervenant; 
 	//private IDAOParticipation daoParticipation; 
-	private IDAOPrestation daoPrestation; 
+	//private IDAOPrestation daoPrestation; 
 	private IDAOSpectateur daoSpectateur; 
 	
 	

@@ -4,6 +4,29 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+<<<<<<< HEAD
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Patient implements Serializable {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@Column(length = 30)
+	private String nom;
+	
+	@Column(length = 30)
+	private String prenom;
+	
+	public Patient() {
+		
+	}
+	
+=======
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -20,6 +43,7 @@ public class Patient implements Serializable {
 	
 	public Patient() {
 	}
+>>>>>>> groupe2
 	
 	public Patient(Integer id, String nom, String prenom) {
 		this.id = id;

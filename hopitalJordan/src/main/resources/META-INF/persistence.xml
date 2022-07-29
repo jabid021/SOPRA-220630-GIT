@@ -4,8 +4,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 
+<<<<<<< HEAD
+	<persistence-unit name="hopital"
+=======
 
 	<persistence-unit name="persistenceJPA"
+>>>>>>> groupe2
 		transaction-type="RESOURCE_LOCAL">
 		<!-- implementation de JPA -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
@@ -14,7 +18,11 @@
 			<property name="hibernate.connection.driver"
 				value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.connection.url"
+<<<<<<< HEAD
+				value="jdbc:mysql://localhost:3306/hopital?serverTimezone=UTC" />
+=======
 				value="jdbc:mysql://localhost:3306/hopital" />
+>>>>>>> groupe2
 			<property name="hibernate.connection.user" value="root" />
 			<property name="hibernate.connection.password"
 				value="" />
@@ -26,6 +34,9 @@
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
 	</persistence-unit>
+<<<<<<< HEAD
+=======
 	
 	
+>>>>>>> groupe2
 </persistence>

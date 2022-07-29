@@ -3,13 +3,20 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
+import javax.persistence.DiscriminatorValue;
+=======
+>>>>>>> groupe2
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Medecin extends Compte {
 
+<<<<<<< HEAD
+=======
 	
+>>>>>>> groupe2
 	private transient int salle;
 	
 	@OneToMany(mappedBy = "medecin")
@@ -18,6 +25,10 @@ public class Medecin extends Compte {
 	public Medecin() {
 	}
 	
+	public Medecin() {
+		
+	}
+
 	public Medecin(int id,String login) {
 		super(login);
 		this.id=id;

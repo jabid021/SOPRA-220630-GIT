@@ -4,6 +4,5 @@ public enum Talent {
 
 	Chant,Danse,Mixer,Autre;
 	
-
 	
 }

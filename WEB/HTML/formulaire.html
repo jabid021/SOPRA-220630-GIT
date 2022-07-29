@@ -1,0 +1,84 @@
+<!--
+
+liste deroulante => Select
+
+choix => choix unique, choix multiples => radio, checkbox
+
+saisie => input :
+text
+submit
+password
+date
+time
+number
+email
+url
+
+
+button => envoyer,
+
+
+zone de texte => textarea
+
+
+
+
+
+-->
+<title>Page Informations : </title>
+
+<h1>Page Informations : </h1>
+
+<form>
+  <h3>Infos perso</h3>
+  <table>
+  <input name="idPersonne" type="hidden" value="15">
+    <tr><td>Login : *</td><td> <input  required title="il faut saisir un login entre 5 et 20 lettres"  type="text" placeholder="Saisir login" value="jabid1" minlength="5" maxlength="20 "></td></tr>
+    <tr><td>Password : *</td><td><input required placeholder="Saisir password" type="password"  value="toto123"></td></tr>
+    <tr><td>Email : *</td><td><input required  placeholder="Saisir email" required type="email" value="j.abid@ajc-ingenierie.fr"></td></tr>
+    <tr><td>Age : </td><td><input  type="number" min="0" max="80" size="20" value="0"></td></tr>
+    <tr><td>Naissance : </td><td>  <input type="date" value="1993-05-01"></td></tr>
+    <tr><td>Heure : </td><td>  <input type="time" min="10:15" max="19:15" step="7200"></td></tr>
+    <tr><td>Prix : </td><td>  <input type="number" value="0" min="0" step="0.01"></td></tr>
+    <tr><td>Color : </td><td>  <input type="color"></td></tr>
+    <tr><td>Note : </td><td>  <input name="range" min="0" max="10" step="2" type="range"></td></tr>
+  </table>
+
+
+  <h3>Choix</h3>
+
+  <table>
+    <tr><td>Votre OS</td>
+      <td>
+        <select>
+          <option>Linux</option>
+          <option selected >MacOs</option>
+          <option>Windows</option>
+        </select>
+      </td>
+    </tr>
+<tr>
+    <td>Loisir : </td>
+    <td>Sport <input checked type="checkbox"> Cinema <input type="checkbox"> Lecture <input type="checkbox"></td>
+</tr>
+<tr>
+    <td>Civilite : </td>
+    <td>Homme <input checked name="civ" type="radio"> Femme <input name="civ" type="radio"> NB <input name="civ" type="radio"></td>
+</tr>
+
+
+
+
+  </table>
+
+
+  <h3>Commentaire</h3>
+  <table>
+    <tr><td>Commentaire :</td><td> <textarea  placeholder="Saisir commentaire" rows="4" cols="60"></textarea> </td></tr>
+  </table>
+
+  <input value="Insert" type="submit"><input value="Reset" type="reset">
+
+
+</form>
+<button>Go</button>

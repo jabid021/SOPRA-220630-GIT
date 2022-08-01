@@ -25,59 +25,76 @@ zone de texte => textarea
 
 
 -->
+<a href="delete.html?id=2">lien en get</a>
+
+
+
+
 <title>Page Informations : </title>
 
 <h1>Page Informations : </h1>
 
-<form>
-  <h3>Infos perso</h3>
+<form action="insertBdd.html" method="get" enctype="multipart/form-data">
+
+  <fieldset>
+
+
+  <legend>Infos perso</legend>
   <table>
   <input name="idPersonne" type="hidden" value="15">
-    <tr><td>Login : *</td><td> <input  required title="il faut saisir un login entre 5 et 20 lettres"  type="text" placeholder="Saisir login" value="jabid1" minlength="5" maxlength="20 "></td></tr>
-    <tr><td>Password : *</td><td><input required placeholder="Saisir password" type="password"  value="toto123"></td></tr>
-    <tr><td>Email : *</td><td><input required  placeholder="Saisir email" required type="email" value="j.abid@ajc-ingenierie.fr"></td></tr>
-    <tr><td>Age : </td><td><input  type="number" min="0" max="80" size="20" value="0"></td></tr>
-    <tr><td>Naissance : </td><td>  <input type="date" value="1993-05-01"></td></tr>
-    <tr><td>Heure : </td><td>  <input type="time" min="10:15" max="19:15" step="7200"></td></tr>
-    <tr><td>Prix : </td><td>  <input type="number" value="0" min="0" step="0.01"></td></tr>
-    <tr><td>Color : </td><td>  <input type="color"></td></tr>
-    <tr><td>Note : </td><td>  <input name="range" min="0" max="10" step="2" type="range"></td></tr>
+    <tr><td><label for="login">Login : *</label></td><td> <input name="login" id="login" required title="il faut saisir un login entre 5 et 20 lettres"  type="text" placeholder="Saisir login" value="jabid1" minlength="5" maxlength="20 "></td></tr>
+    <tr><td>Password : *</td><td><input  name="password" required pattern="[A-9]{4,8}" title="4 à 8 lettres !" placeholder="Saisir password" type="password"  value="toto123"></td></tr>
+    <tr><td>Email : *</td><td><input  name="email" required  placeholder="Saisir email" required type="email" value="j.abid@ajc-ingenierie.fr"></td></tr>
+    <tr><td>Age : </td><td><input  name="age" type="number" min="0" max="80" size="20" value="0"></td></tr>
+    <tr><td>Naissance : </td><td>  <input name="naissance" type="date" value="1993-05-01"></td></tr>
+    <tr><td>Semaine : </td><td>  <input name="semaine" type="week"></td></tr>
+    <tr><td>Heure : </td><td>  <input name="heure" type="time" min="10:15" max="19:15" step="7200"></td></tr>
+    <tr><td>Prix : </td><td>  <input name="prix" type="number" value="0" min="0" step="0.01"></td></tr>
+    <tr><td>Color : </td><td>  <input name="color" type="color"></td></tr>
+    <tr><td>Note : </td><td>  <input name="note" name="range" min="0" max="10" step="2" type="range"></td></tr>
   </table>
 
+  </fieldset>
 
-  <h3>Choix</h3>
+
+  <fieldset>
+  <legend>Choix</legend>
 
   <table>
     <tr><td>Votre OS</td>
       <td>
-        <select>
-          <option>Linux</option>
-          <option selected >MacOs</option>
-          <option>Windows</option>
+        <select name="os">
+          <optgroup label="choixOS">Choix OS 1</optgroup>
+          <option value="1">Linux</option>
+          <option selected value="2">MacOs</option>
+          <option value="3">Windows</option>
         </select>
       </td>
     </tr>
 <tr>
     <td>Loisir : </td>
-    <td>Sport <input checked type="checkbox"> Cinema <input type="checkbox"> Lecture <input type="checkbox"></td>
+    <td><label for="loisir-sport">Sport</label> <input name="loisir-sport" id="loisir-sport" checked type="checkbox"> <label for="loisir-cinema">Cinema</label> <input name="loisir-cinema"  id="loisir-cinema" type="checkbox"> <label for="loisir-lecture">Lecture</label> <input name="loisir-lecture"  id="loisir-lecture" type="checkbox"></td>
 </tr>
 <tr>
     <td>Civilite : </td>
-    <td>Homme <input checked name="civ" type="radio"> Femme <input name="civ" type="radio"> NB <input name="civ" type="radio"></td>
+    <td><label for="civ-homme">Homme</label> <input name="civ"  value="homme" id="civ-homme" checked name="civ" type="radio"> <label  for="civ-femme">Femme</label><input id="civ-femme" value="femme" name="civ" type="radio"> <label for="civ-nb">NB</label> <input name="civ"  id="civ-nb" value="nb" name="civ" type="radio"></td>
 </tr>
 
-
-
-
   </table>
 
+  </fieldset>
 
-  <h3>Commentaire</h3>
+  <fieldset>
+  <legend>Commentaire</legend>
   <table>
-    <tr><td>Commentaire :</td><td> <textarea  placeholder="Saisir commentaire" rows="4" cols="60"></textarea> </td></tr>
-  </table>
+    <tr><td>Commentaire :</td><td> <textarea  name="commentaire"  placeholder="Saisir commentaire" rows="4" cols="60"></textarea> </td></tr>
+  <tr><td>CV :</td><td> <input name="cv" type="file"></td></tr>
 
-  <input value="Insert" type="submit"><input value="Reset" type="reset">
+
+
+  </table>
+  </fieldset>
+  <input value="Envoyer" type="submit"><input value="Reset" type="reset">
 
 
 </form>

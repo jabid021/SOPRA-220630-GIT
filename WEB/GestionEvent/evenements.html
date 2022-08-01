@@ -1,0 +1,114 @@
+<!--
+
+  Page gestion des evenements, afficher les evenements dans un tableau, sur chaque ligne, ajouter un bouton modifier / delete
+  Faire un formulaire avec les saisies suivantes :
+
+  libelle,date et heure debut/fin, prix, type evenement (Competition ou Festival), choix Sport (Judo,Foot,LoL...), numero, voie, ville, cp, (gagnant (id+nom : 3 - Jordan Abid) )*
+ -->
+<h1>Gestion des évenements</h1>
+<button id="btn-add">Ajouter</button>
+  <input type="hidden" value="ajouter" name="tache">
+
+  <table border width="80%">
+
+    <thead>
+
+      <tr>
+        <th>libelle</th>
+        <th>date debut</th>
+        <th>heure debut</th>
+        <th>date fin</th>
+        <th>heure fin</th>
+        <th>prix</th>
+        <th>type evenement</th>
+        <th>choix sport</th>
+        <th>numero</th>
+        <th>voie</th>
+        <th>ville</th>
+        <th>cp</th>
+        <th>gagnant</th>
+        <th>actions</th>
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>Tournoi de Judo</td>
+        <td>2022-07-16</td>
+        <td>15:00:00</td>
+        <td>2022-07-16</td>
+        <td>20:00:00</td>
+        <td>0</td>
+        <td>competition</td>
+        <td>Judo</td>
+        <td>10</td>
+        <td>rue la Fayette</td>
+        <td>Nantes</td>
+        <td>44000</td>
+        <td>3 - Jordan Abid</td>
+        <td>
+          <a href="updateEvenement.html?id=1"><button>Modifier</button></a>
+          <form action="evenement.java" method="post">
+            <input type="hidden" name="tache" value="modifier">
+            <input type="hidden" name="id" value="1">
+            <input type="submit" value="Supprimer">
+          </form>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Festival Solidays</td>
+        <td>2022-07-18</td>
+        <td>19:00:00</td>
+        <td>2022-07-18</td>
+        <td>20:00:00</td>
+        <td>20</td>
+        <td>festival</td>
+        <td></td>
+        <td>2</td>
+        <td>roule des tribunes</td>
+        <td>Paris</td>
+        <td>75016</td>
+        <td>/</td>
+        <td>
+          <a href="updateEvenement.html?id=2"><button>Modifier</button></a>
+          <form action="evenement.java" method="post">
+            <input type="hidden" name="tache" value="modifier">
+            <input type="hidden" name="id" value="2">
+            <input type="submit" value="Supprimer">
+          </form>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+
+  <h3>Ajouter un evenement</h3>
+  <form action="evenement.java" method="post">
+    <input type="hidden" name="tache" value="ajouter">
+    Libellé : <input required name="libelle" type="text" placeholder="Libelle evenement"><br><br>
+    Date de début : <input required name="dateDebut" type="date"> <br><br>
+    Heure de début : <input required name="heureDebut" type="time"><br><br>
+    Date fin : <input required name="dateFin" type="date"><br><br>
+    Heure fin : <input required name="heureFin" type="time"><br><br>
+    Prix : <input name="prix" required type="number" placeholder="Prix"><br><br>
+
+
+    <fieldset>
+      <legend>Adresse</legend>
+
+      Numero : <input name="adresse-number" type="text">
+      Voie : <input name="adresse-voie" type = "text">
+      Code postale : <input name="adresse-cp" type="text">
+      Ville : <input name="adresse-ville" type="text">
+    </fieldset><br>
+      Type d'évenement : <input required name="typeEvenement" checked value="festival" id="typeEvenement" name="event" type="radio"> Festival <input name="typeEvenement"  value="competition" id="typeEvenement" name="event" type="radio"> Compétition<br><br>
+
+Choix du Sport : <select> <option>Judo </option> <option> Foot </option> <option>LoL</option> <option>Autre</option> </select><br><br>
+    <input type="submit" value="Ajouter">
+  </form>
+
+  <a href="menuAdmin.html">Retour</a>

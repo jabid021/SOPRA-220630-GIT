@@ -11,7 +11,6 @@
 <table border>
   <thead>
     <tr>
-      <th>Nom prestation</th>
       <th>Date debut</th><th>Heure debut</th>
       <th>Date fin</th><th>Heure fin</th>
       <th>Nom intervenant</th><th>Idintervenant</th>
@@ -21,7 +20,6 @@
 
   <tbody>
     <tr>
-      <td>Prestation1</td>
       <td>2000-01-01</td><td>15:00</td>
       <td>2000-01-01</td><td>16:00</td>
       <td>Intervenant1</td><td>1</td>
@@ -39,7 +37,6 @@
 
   <tbody>
     <tr>
-      <td>Prestation2</td>
       <td>2000-01-01</td><td>17:00</td>
       <td>2000-01-01</td><td>18:00</td>
       <td>Intervenant2</td><td>2</td>
@@ -49,6 +46,23 @@
       <form action="prestation.java" method="post">
         <input type="hidden" name="tache" value="supprimer">
         <input type="hidden" name="id" value="2">
+        <input type="submit" value="supprimer">
+        </form>
+        </td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <td>2000-01-01</td><td>19:00</td>
+      <td>2000-01-01</td><td>20:00</td>
+      <td>Intervenant3</td><td>3</td>
+      <td>Festival2</td><td>3</td>
+      <td>
+      <a href="updatePrestation.html?id=3"><button>Modifier</button></a>
+      <form action="prestation.java" method="post">
+        <input type="hidden" name="tache" value="supprimer">
+        <input type="hidden" name="id" value="3">
         <input type="submit" value="supprimer">
         </form>
         </td>

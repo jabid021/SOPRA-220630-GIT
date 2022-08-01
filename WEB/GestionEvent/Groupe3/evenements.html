@@ -9,4 +9,35 @@
  <form action="evenement.java" method="post">
    <input type="hidden" value="ajouter" name="tache">
 
+
+
+
+
+
+
+
+  <h3>Ajouter un evenement</h3>
+  <form action="evenement.java" method="post">
+    <input type="hidden" name="tache" value="ajouter">
+    Libellé : <input required name="libelle" type="text" placeholder="Libelle evenement"><br><br>
+    Date debut : <input name="date-debut" type="date"> <br><br>
+    Heure debut : <input name="heure-debut" type="time"><br><br>
+    Date fin : <input name="date-fin" type="date"><br><br>
+    Heure fin : <input name="heure-fin" type="time"><br><br>
+    Type d'evenement : <select> <option> Festival </option> <option>Competition</option> </select><br><br>
+    Prix : <input name="prix" type="number" placeholder="Prix"><br><br>
+    Sport : <select> <option>Judo </option> <option> Foot </option> <option>LoL</option> <option>Autre</option> </select><br><br>
+
+    <fieldset>
+      <legend>Adresse</legend>
+      
+      Numero : <input name="adresse-number" type="text">
+      Voie : <input name="adresse-voie" type = "text">
+      Code postale : <input name="adresse-cp" type="text">
+      Ville : <input name="adresse-ville" type="text">
+    </fieldset>
+    </form>
+
+    <input type="submit" value="Ajouter">
+  </form>
 </form>

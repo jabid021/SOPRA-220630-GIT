@@ -1,0 +1,77 @@
+<h1>Gestion des intervenants</h1>
+
+<button id="btn-add">Ajouter</button>
+
+<table border width="80%">
+
+  <thead>
+
+    <tr>
+      <th>Nom</th>
+      <th>Talents</th>
+      <th>Actions</th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+    <tr>
+      <td>Intervenant1</td>
+      <td>Chant,Danse,Autre</td>
+      <td>
+        <a href="updateIntervenant.html?id=1"><button>Modifier</button></a>
+        <form action="intervenant.java" method="post">
+          <input type="hidden" name="tache" value="supprimer">
+          <input type="hidden" name="id" value="1">
+          <input type="submit" value="Supprimer">
+        </form>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Intervenant2</td>
+      <td>Autre</td>
+      <td>
+        <a href="updateIntervenant.html?id=2"><button>Modifier</button></a>
+        <form action="intervenant.java" method="post">
+          <input type="hidden" name="tache" value="supprimer">
+          <input type="hidden" name="id" value="2">
+          <input type="submit" value="Supprimer">
+        </form>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Intervenant3</td>
+      <td>Chant,Mixer</td>
+      <td>
+        <a href="updateIntervenant.html?id=3"><button>Modifier</button></a>
+        <form action="intervenant.java" method="post">
+          <input type="hidden" name="tache" value="supprimer">
+          <input type="hidden" name="id" value="3">
+          <input type="submit" value="Supprimer">
+        </form>
+      </td>
+    </tr>
+
+
+
+
+  </tbody>
+
+
+</table>
+
+
+<h3>Ajouter un intervenant</h3>
+<form action="intervenant.java" method="post">
+  <input type="hidden" name="tache" value="ajouter">
+  Nom : <input required name="nom" type="text" placeholder="nom intervenant"><br>
+  Talents : <input name="Chant" type="checkbox"> Chant <input name="Danse" type="checkbox"> Danse  <input name="Mixer" type="checkbox"> Mixer  <input name="Autre" type="checkbox"> Autre<br>
+  <input type="submit" value="Ajouter">
+</form>
+
+
+
+<a href="menuAdmin.html">Retour</a>

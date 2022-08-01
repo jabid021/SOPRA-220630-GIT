@@ -10,29 +10,31 @@ choix Sport (Judo,Foot,LoL...), numero, voie, ville, cp,gagnant (id+nom : 3 - Jo
 <form action="evenement.java" method="post">
   <input type="hidden" value="modifier" name="tache">
   <input type="hidden" name="id" value="1">
-  Libellé : <input name="libelle" type="text" placeholder="libelle de l'evenement" value="Tournoi de Judo" ><br>
-  Date de début: <input name="dateDebut" type="date" value="2022-07-16"><br>
-  Heure de début : <input name="HeureDebut" type="time" value="15:00:00"><br>
-  Date de fin : <input name="dateFin" type="date" value="2022-07-16"><br>
-  Heure de fin : <input name="HeureFin" type="time" value="20:00:00"><br>
-  Prix : <input name="prix" type="number" value="0" min="0" step="0.01" value="0"><br>
-  Type d'évenement : <input name="typeEvenement"  value="festival" id="typeEvenement" name="event" type="radio"> Festival <input checked name="typeEvenement"  value="competition" id="typeEvenement" name="event" type="radio"> Compétition<br>
-  Choix du Sport : <select name="typeSport">
-    <option checked>Judo</option>
-    <option>Foot</option>
-    <option>LoL</option>
-    <option>Autre</option>
-  </select>
+  Libellé : <input required name="libelle" type="text" placeholder="libelle de l'evenement" value="Tournoi de Judo" ><br>
+  Date de début: <input required name="dateDebut" type="date" value="2022-07-16"><br>
+  Heure de début : <input required name="heureDebut" type="time" value="15:00:00"><br>
+  Date de fin : <input required name="dateFin" type="date" value="2022-07-16"><br>
+  Heure de fin : <input required name="heureFin" type="time" value="20:00:00"><br>
+  Prix : <input name="prix" required type="number" value="0" min="0" step="0.01" value="0"><br>
   <fieldset>
     <legend>Adresse</legend>
   Numero : <input  name="numero" type="number" min="0" value="10"><br>
   Voie : <input name="voie" type="text" value="rue la Fayette"><br>
   Ville : <input name="Ville" type="text" value="Nantes"><br>
   Code postal : <input  name="cp" type="number" min="0" value="44000"><br>
-  </fieldset>
+  </fieldset><br>
+  Choix du Sport : <select name="typeSport">
+    <option checked>Judo</option>
+    <option>Foot</option>
+    <option>LoL</option>
+    <option>Autre</option>
+  </select><br>
+  Type d'évenement : <input name="typeEvenement"  value="festival" id="typeEvenement" name="event" type="radio"> Festival <input checked name="typeEvenement"  value="competition" id="typeEvenement" name="event" type="radio"> Compétition<br><br>
   Gagnant : <select name="participant">
     <option value="1">jabid1</option>
     <option value="2">jabid2</option>
     <option checked value="3">jabid3</option>
-  </select>
+  </select><br><br>
+  <input type="submit" value="Modifier">
+  <a href="evenements.html"><button type="button">Annuler</button></a>
 </form>

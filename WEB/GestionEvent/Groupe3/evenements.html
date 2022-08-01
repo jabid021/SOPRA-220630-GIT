@@ -71,7 +71,7 @@
         <td>roule des tribunes</td>
         <td>Paris</td>
         <td>75016</td>
-        <td>4 - Toto</td>
+        <td>/</td>
         <td>
           <a href="updateEvenement.html?id=2"><button>Modifier</button></a>
           <form action="evenement.java" method="post">
@@ -90,13 +90,12 @@
   <form action="evenement.java" method="post">
     <input type="hidden" name="tache" value="ajouter">
     Libellé : <input required name="libelle" type="text" placeholder="Libelle evenement"><br><br>
-    Date debut : <input name="date-debut" type="date"> <br><br>
-    Heure debut : <input name="heure-debut" type="time"><br><br>
-    Date fin : <input name="date-fin" type="date"><br><br>
-    Heure fin : <input name="heure-fin" type="time"><br><br>
-    Type d'évenement : <input name="typeEvenement" checked value="festival" id="typeEvenement" name="event" type="radio"> Festival <input name="typeEvenement"  value="competition" id="typeEvenement" name="event" type="radio"> Compétition<br>
-    Prix : <input name="prix" type="number" placeholder="Prix"><br><br>
-    Sport : <select> <option>Judo </option> <option> Foot </option> <option>LoL</option> <option>Autre</option> </select><br><br>
+    Date de début : <input required name="dateDebut" type="date"> <br><br>
+    Heure de début : <input required name="heureDebut" type="time"><br><br>
+    Date fin : <input required name="dateFin" type="date"><br><br>
+    Heure fin : <input required name="heureFin" type="time"><br><br>
+    Prix : <input name="prix" required type="number" placeholder="Prix"><br><br>
+
 
     <fieldset>
       <legend>Adresse</legend>
@@ -105,8 +104,11 @@
       Voie : <input name="adresse-voie" type = "text">
       Code postale : <input name="adresse-cp" type="text">
       Ville : <input name="adresse-ville" type="text">
-    </fieldset>
+    </fieldset><br>
+      Type d'évenement : <input required name="typeEvenement" checked value="festival" id="typeEvenement" name="event" type="radio"> Festival <input name="typeEvenement"  value="competition" id="typeEvenement" name="event" type="radio"> Compétition<br><br>
 
-
+Choix du Sport : <select> <option>Judo </option> <option> Foot </option> <option>LoL</option> <option>Autre</option> </select><br><br>
     <input type="submit" value="Ajouter">
   </form>
+
+  <a href="menuAdmin.html">Retour</a>

@@ -21,11 +21,11 @@
         <th>heure fin</th>
         <th>prix</th>
         <th>type evenement</th>
-        <th>choix sport</th>
         <th>numero</th>
         <th>voie</th>
         <th>ville</th>
         <th>cp</th>
+        <th>choix sport</th>
         <th>gagnant</th>
         <th>actions</th>
       </tr>
@@ -42,11 +42,11 @@
         <td>20:00:00</td>
         <td>0</td>
         <td>competition</td>
-        <td>Judo</td>
         <td>10</td>
         <td>rue la Fayette</td>
         <td>Nantes</td>
         <td>44000</td>
+        <td>Judo</td>
         <td>3 - Jordan Abid</td>
         <td>
           <a href="updateEvenement.html?id=1"><button>Modifier</button></a>
@@ -66,11 +66,11 @@
         <td>20:00:00</td>
         <td>20</td>
         <td>festival</td>
-        <td></td>
         <td>2</td>
         <td>roule des tribunes</td>
         <td>Paris</td>
         <td>75016</td>
+        <td>/</td>
         <td>/</td>
         <td>
           <a href="updateEvenement.html?id=2"><button>Modifier</button></a>
@@ -94,7 +94,7 @@
     Heure de début : <input required name="heureDebut" type="time"><br><br>
     Date fin : <input required name="dateFin" type="date"><br><br>
     Heure fin : <input required name="heureFin" type="time"><br><br>
-    Prix : <input name="prix" required type="number" placeholder="Prix"><br><br>
+    Prix : <input name="prix" required type="number" placeholder="Prix" min="0"><br><br>
 
 
     <fieldset>

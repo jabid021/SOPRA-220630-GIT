@@ -11,13 +11,10 @@ afficher un formulaire avec les saisies suivantes :
 
 login, password, nom,prenom, naissance,telephone, numero,voie, ville,cp
 -->
-<title> Tableau des Utilisateurs Gestion  Event.: </title>
+<title> Tableau des Utilisateurs Gestion < Event.: </title>
 <h2> Tableau des Utilisateurs : </h2>
-
-<input type="button" value="Ajouter">
-<form action="updateUser.html" method="post">
+<form action="user.java" method="post">
   <fieldset>
-    
     <legend>Donnees Utilisateurs</legend>
 
     <input type="hidden" value="ajouter" name="tache">
@@ -48,7 +45,7 @@ login, password, nom,prenom, naissance,telephone, numero,voie, ville,cp
         <tr>
           <td>User1</td>
           <td> toto123
-            
+            <type =password>
             </td>
             <td> John </td>
             <td>Doe</td>
@@ -59,7 +56,7 @@ login, password, nom,prenom, naissance,telephone, numero,voie, ville,cp
             <td>Toulouse</td>
             <td>31000</td>
             <td>
-              <a href="updateUser.html?id=2"><button>Modifier</button></a>
+              <a href="createuser.html?id=2"><button>Modifier</button></a>
               <a href="deleteuser.html?id=2"><button>Supprimer</button></a>
             </td>
           </tr>
@@ -68,7 +65,7 @@ login, password, nom,prenom, naissance,telephone, numero,voie, ville,cp
     </fieldset>
   </form>
 
-  
+  <span>Fermer le tableau d'Utilisateurs ? <a href="acceuil.html">Close</a></span>
   <h3>Ajouter un utilisateur.</h3>
   <form action="utilisateur.java" method="post">    <fieldset>
     <legend>Ajouter Utilisateur</legend>
@@ -85,7 +82,6 @@ login, password, nom,prenom, naissance,telephone, numero,voie, ville,cp
       <tr>  <td>cp : </td> <td><input required name="cp" type="text" placeholder="code postal"> </td></tr>
     </table>
     <input type="submit" value="Ajouter">
-    
+    <a href="users.html"><button type="button">Annuler</button></a>
 
   </form>
-  <a href="menuAdmin.html">Retour</a>

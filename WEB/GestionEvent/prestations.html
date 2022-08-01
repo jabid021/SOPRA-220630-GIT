@@ -6,13 +6,16 @@ date et heure debut/ fin , nom de l'intervenant + id (1 - intervenant1), nom du 
 -->
 <h1>Gestion des prestations</h1>
 
+<input type="submit" value="Ajouter"></input>
+
 <table border>
   <thead>
     <tr>
       <th>Date debut</th><th>Heure debut</th>
       <th>Date fin</th><th>Heure fin</th>
-      <th>Nom intervenant</th><th>Idintervenant</th>
-      <th>Nom festival</th><th>Idfestival</th>
+      <th>Id-Nom Intervenant</th>
+      <th>Id-Nom Festival</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -20,8 +23,8 @@ date et heure debut/ fin , nom de l'intervenant + id (1 - intervenant1), nom du 
     <tr>
       <td>2000-01-01</td><td>15:00</td>
       <td>2000-01-01</td><td>16:00</td>
-      <td>Intervenant1</td><td>1</td>
-      <td>Solidays</td><td>1</td>
+      <td>1-Intervenant1</td>
+      <td>1-Solidays</td>
       <td>
         <a href="updatePrestation.html?id=1"><button>Modifier</button></a>
         <form action="prestation.java" method="post">
@@ -37,8 +40,8 @@ date et heure debut/ fin , nom de l'intervenant + id (1 - intervenant1), nom du 
     <tr>
       <td>2000-01-01</td><td>17:00</td>
       <td>2000-01-01</td><td>18:00</td>
-      <td>Intervenant2</td><td>2</td>
-      <td>Festival2</td><td>2</td>
+      <td>2-Intervenant2</td>
+      <td>2-Festival2</td>
       <td>
         <a href="updatePrestation.html?id=2"><button>Modifier</button></a>
         <form action="prestation.java" method="post">
@@ -54,8 +57,8 @@ date et heure debut/ fin , nom de l'intervenant + id (1 - intervenant1), nom du 
     <tr>
       <td>2000-01-01</td><td>19:00</td>
       <td>2000-01-01</td><td>20:00</td>
-      <td>Intervenant3</td><td>3</td>
-      <td>Festival2</td><td>3</td>
+      <td>3-Intervenant3</td>
+      <td>2-Festival2</td>
       <td>
         <a href="updatePrestation.html?id=3"><button>Modifier</button></a>
         <form action="prestation.java" method="post">
@@ -90,5 +93,6 @@ date et heure debut/ fin , nom de l'intervenant + id (1 - intervenant1), nom du 
     <option value="2">2-Festival2</option>
   </select><br><br>
 
-<button id="btn-add" type="button">Ajouter</button>
+<input type="submit" value="Ajouter"></input>
+<a href="menuAdmin.html"><button type="button">Retour</button></a>
 </form>

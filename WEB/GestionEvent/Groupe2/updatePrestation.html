@@ -1,10 +1,28 @@
 <!--
-  Page modif prestation, faire un formulaire pré-rempli avec les saisies suivantes :
+Page modif prestation, faire un formulaire pré-rempli avec les saisies suivantes :
 
-  id (hidden), date et heure debut/ fin , nom de l'intervenant + id (1 - intervenant1), nom du festival + id  (2- Solidays)
- -->
+id (hidden), date et heure debut/ fin , nom de l'intervenant + id (1 - intervenant1), nom du festival + id  (2- Solidays)
+-->
+<h1>Modifier prestation</h1>
 
- <form action="prestation.java" method="post">
-   <input type="hidden" value="modifier" name="tache">
+<form action="prestation.java" method="post">
+  <input type="hidden" value="modifier" name="tache">
+  <input type="hidden" name="id" value="1">
 
+  Date : <input name="date" type="date"><br><br>
+  Heure : <input name="heure" type="time"><br><br>
+  Nom : <select>
+          <option value="1">Intervenant1</option>
+          <option value="2">Intervenant2</option>
+          <option value="3">Intervenant3</option>
+        </select><br><br>
+
+  Nom festival : <select>
+                    <option value="1">1-Solidays</option>
+                    <option value="2">2-Festival2</option>
+                 </select><br><br>
+
+
+  <input type="submit" value="Modifier">
+  <a href="prestations.html"><button type="button">Annuler</button></a>
 </form>

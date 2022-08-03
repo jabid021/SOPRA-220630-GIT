@@ -1,0 +1,174 @@
+<meta charset="utf-8">
+
+
+
+
+<script>
+
+
+
+/* var <=> static en java*/
+var login;
+var age=29;
+
+/*var notes = new Array(10);
+alert(notes);
+console.log(notes);*/
+/*
+var notes2 = [15,8,2,19,20,-5];
+var zoom = ["Jordan","Alae","Amélia","Louis"];
+
+notes2[0]=17;
+notes2[6]=3;
+
+zoom[zoom.length] = "John";
+
+for(index in zoom)
+{
+  console.log("case "+index+" : "+zoom[index]);
+}
+
+for(prenom of zoom)
+{
+  console.log(prenom);
+}
+*/
+
+var personne = new Object();
+personne.nom="Abid";
+personne.prenom="Jordan";
+personne.age=29;
+console.log(personne);
+
+
+var personne2 = {nom:"Abid", prenom:"Jordan",age:29};
+console.log(personne2);
+
+var choix = prompt("saisir attribut");
+
+console.log(personne2[choix]);
+
+
+
+var listePersonne = [{nom:"Abid", prenom:"Jordan",age:29},personne];
+
+//alert(listePersonne.join("------")); 
+
+console.log(listePersonne);
+
+for(pers of listePersonne)
+{
+  console.log(pers);
+}
+
+//Ajouter à la fin du tableau :
+//zoom.push("Ghavesh");
+
+//Ajoute au debut du tableau
+//zoom.unshift("Toto");
+
+
+//Retirer le 1er element du tableau
+//var personneFirst = zoom.shift();
+
+//Retirer le dernier element du tableau
+//var personneLast=zoom.pop();
+
+//console.log("Le premier etait : "+personneFirst+" / Le dernier etait : "+personneLast);
+
+
+//zoom.sort();
+//zoom.reverse();
+/*console.log(notes2);
+notes2.sort(compareNumber);
+console.log(notes2);
+
+zoom.sort(compareLength);
+
+console.log(zoom);
+
+
+
+
+function compareLength(mot1,mot2)
+{
+    return mot1.length-mot2.length;
+}
+
+function compareNumber(a,b)
+{
+  return a-b;
+}*/
+
+//console.log(zoom);
+//notes2.length=1;
+
+
+
+//console.log(notes2);
+//console.log(notes2.length);
+
+
+
+
+/*console.log(age+3);
+console.log(age++);
+if(age==29){console.log(age+"== 29");}
+
+if(age===29){console.log(age+"=== 29");}
+else{console.log("non");}
+
+
+switch(age)
+{
+  case 30 : console.log("");break;
+  default : break;
+}
+
+
+console.log((age>=18)? "majeur" : "Mineur");
+
+
+/*var prenom;
+while(prenom!="jordan")
+{
+  prenom=prompt("saisir prenom");
+}
+
+console.log(prenom+" est ok");
+
+do
+{
+    prenom=prompt("saisir prenom");
+}while(prenom!="Jordan");
+
+console.log(prenom+" est ok");
+
+
+for(let i=0;i<=10;i++)
+{
+  console.log(i);
+}
+
+
+
+
+
+
+
+
+
+  /*function maFonction()
+  {
+    login=prompt("Saisir login");
+  }
+
+  function maFonction2()
+  {
+    alert(login);
+  }*/
+
+
+
+
+</script>

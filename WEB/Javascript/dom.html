@@ -1,0 +1,87 @@
+
+<title>LE DOM</title>
+
+<h1 id="titrePrinci" monAttribut="valeur">LE DOM ! (Document Object Model)</h1>
+<h2 id="titre2">Titre à remplacer</h2>
+
+<div id="baliseVide"></div>
+<p id="paragPrinci">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p class="elementImportant">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<h2 class="elementImportant">c'etait pas drole</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+
+
+
+
+<input type="text" placeholder="login" id="idLogin">
+<input type="password" value="password123" id="password">
+<input id="btnForm" type="submit" value="Se connecter">
+
+
+<script>
+
+  document.title="Nouveau titre";
+
+  pointeurClass();
+
+  function pointeurId()
+  {
+    var maBalise = document.getElementById("titrePrinci");
+
+    console.log(maBalise.innerHTML);
+    maBalise.innerHTML="Nouveau h1";
+
+    maBalise.style.color="red";
+    maBalise.style.backgroundColor="cyan";
+
+    maBalise.style.setProperty("font-family","Arial");
+
+
+    console.log(maBalise.getAttribute("monAttribut"));
+
+    maBalise.setAttribute("attr2","valeur2");
+    maBalise.setAttribute("monAttribut","nouvelleValeur");
+    maBalise.removeAttribute("attr2");
+    maBalise.removeAttribute("attr3");
+
+
+    btnForm.style.color="green";
+    btnForm.setAttribute("disabled",true);
+    btnForm.disabled=false;
+
+    titre2.innerHTML=titrePrinci.innerHTML;
+
+    baliseVide.innerHTML="<ul><li>Item</li></ul>";
+
+  }
+
+  function pointeurTag()
+  {
+    var mesBalises=document.getElementsByTagName("p");
+    console.log(mesBalises);
+
+    for(b of mesBalises)
+    {
+      b.style.color="red";
+    }
+  }
+
+  function pointeurClass()
+  {
+    var mesBalises=document.getElementsByClassName("elementImportant");
+    console.log(mesBalises);
+
+    for(b of mesBalises)
+    {
+      b.style.color="red";
+    }
+  }
+
+
+
+
+
+
+</script>

@@ -1,0 +1,59 @@
+<style>
+
+#timer{display:none;}
+#statut{display:none;}
+</style>
+
+<input id="btnPlay" type="button" value="Play">
+<input id="btnPause" type="button" value="Pause">
+
+
+<h1 id="timer">00:00</h1>
+
+
+<div id="statut">Jeu en pause</div>
+
+
+
+
+
+
+<script>
+
+//Quand on clique sur btnPlay => le timer se lance et apparait, statut doit disparaitre (* btnPlay doit etre disabled)
+//Quand on clique sur btnPause => le timer se stop, statut doit apparaitre (* btnPause doit etre disabled)
+
+  var min=0;
+  var sec=0;
+
+  //setInterval(chrono,1000);
+
+
+  function calculTimer()
+  {
+    sec++;
+    if(sec==60)
+    {
+      min++;
+      sec=0;
+      if(min==60)
+      {
+        min=0;
+      }
+    }
+  }
+
+  function chrono()
+  {
+    calculTimer();
+    minAffiche = (min<10) ? "0"+min : min;
+    secondeAffiche = (sec<10) ? "0"+sec : sec;
+
+    timer.innerHTML=minAffiche+":"+secondeAffiche;
+
+  }
+
+
+
+
+</script>

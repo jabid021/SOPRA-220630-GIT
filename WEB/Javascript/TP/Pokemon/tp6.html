@@ -1,0 +1,67 @@
+<style>
+
+  body
+  {
+    background-image : url("assets/img/water.png");
+    background-size:100% 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  #grass
+  {
+    display:none;
+    width:700px;
+    height:700px;
+    background-image : url("assets/img/Grass.png")
+  }
+
+  #pikachu
+  {
+    position:relative;
+    top:0;
+    left:0;
+    display:inline-block;
+  }
+
+</style>
+
+<div id="formStart">
+  <input id="inputName" type="text" placeholder="pikachu"><input id="btnStart" type="button" value="Start !">
+</div>
+
+<div id="grass">
+  <div id="pikachu"><img id="imgPikachu" src="assets/img/pikachuDown.png"></div>
+</div>
+
+
+<script>
+
+
+  var posX=0;
+  var posY=0;
+
+  var img="pikachuDown.png";
+
+
+  document.body.onkeydown=deplacement;
+  btnStart.onclick=lancerAventure;
+
+  function lancerAventure()
+  {
+
+  }
+
+  function deplacement(event)
+  {
+
+
+    
+    pikachu.style.top=posY+"px";
+    pikachu.style.left=posX+"px";
+    imgPikachu.setAttribute("src","assets/img/"+img);
+
+  }
+
+
+</script>

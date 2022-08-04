@@ -10,6 +10,8 @@
 }
 </style>
 
+<meta charset="utf-8">
+
 <input id="btnPlay" type="button" value="Play">
 <input disabled id="btnPause" type="button" value="Pause">
 
@@ -17,7 +19,7 @@
 <h1 id="timer">00:00</h1>
 
 
-<div id="statut"><input disabled type="button" value="prev" id="btnPrev"><span id="prenomEnCours"></span><input type="button" value="next" id="btnNext"></div>
+<div id="statut"><input disabled type="button" value="prev" id="btnPrev" onClick="changeTab(-1)"><span id="prenomEnCours"></span><input type="button" onClick="changeTab(1)" value="next" id="btnNext"></div>
 
 
 
@@ -28,7 +30,7 @@
 
   var zoom = ["Jordan","Alae","Amélia","Louis"];
   var index=0;
-  prenomEnCours.innerHTML="    "+zoom[index]+"    ";
+  prenomEnCours.innerHTML=zoom[index];
 
   var min=0;
   var sec=0;
@@ -37,6 +39,26 @@
   btnPause.onclick= pause;
 
   //setInterval(chrono,1000);
+function changeTab(sens)
+{
+    index+=sens;
+    prenomEnCours.innerHTML=zoom[index];
+    if(index==0)
+    {
+      btnPrev.disabled=true;
+    }
+    else if(index==zoom.length-1)
+    {
+        btnNext.disabled=true;
+    }
+    else
+    {
+      btnNext.disabled=false;
+      btnPrev.disabled=false;
+    }
+}
+
+
 
 function start()
 {

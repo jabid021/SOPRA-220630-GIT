@@ -24,51 +24,19 @@
     display:inline-block;
   }
 
+#error{color:yellow;}
 </style>
+
+
+
+<script defer src="poke.js"></script>
+
 
 <div id="formStart">
   <input id="inputName" type="text" placeholder="pikachu"><input id="btnStart" type="button" value="Start !">
+  <br><br><div id="error">&nbsp;</div>
 </div>
 
 <div id="grass">
   <div id="pikachu"><img id="imgPikachu" src="assets/img/pikachuDown.png"></div>
 </div>
-
-
-<script>
-
-
-//1) saisir le nom du pokemon et valider avec le bouton
-    //inputName.value
-//2) Masquer la div formStart, Afficher la div grass, mettre le nom du pokemon en title sur la div pikachu
-//3) Gerer les deplacements, pouvoir bouger dans toutes les directions (haut,bas,gauche,droite) => les fleches et / ou zqsd
-//4) Modifier la position de la div pikachu en fonction de la direction (30px par deplacement) et changer l'image
-//5) Verifier que pikachu ne sort pas de la div grass
-
-  var posX=0;
-  var posY=0;
-
-  var img="pikachuDown.png";
-
-
-  document.body.onkeydown=deplacement;
-  btnStart.onclick=lancerAventure;
-
-  function lancerAventure()
-  {
-
-  }
-
-  function deplacement(event)
-  {
-
-
-
-    pikachu.style.top=posY+"px";
-    pikachu.style.left=posX+"px";
-    imgPikachu.setAttribute("src","assets/img/"+img);
-
-  }
-
-
-</script>

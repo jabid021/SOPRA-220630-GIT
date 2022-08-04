@@ -1,0 +1,31 @@
+<script>
+
+
+
+p1 = {nom:"France",capitale:"Paris"};
+p2 = {nom:"Norvege",capitale:"Oslo"};
+p3 = {nom:"Italie",capitale:"Rome"};
+p4 = {nom:"Algerie",capitale:"Alger"};
+
+listePays = [p1,p2,p3,p4];
+
+var score=0;
+for(pays of listePays)
+{
+
+  reponse= prompt("Quelle est la capitale du pays : "+pays.nom);
+  if(reponse==pays.capitale)
+  {
+    score++;
+    alert("Bonne réponse !");
+  }
+  else
+  {
+    alert("Mauvaise réponse");
+  }
+}
+
+console.log("Fin du jeu, vous avez "+score+" / "+listePays.length);
+
+
+</script>

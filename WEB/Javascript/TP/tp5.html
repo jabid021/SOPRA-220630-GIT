@@ -2,16 +2,22 @@
 
 #timer{display:none;}
 #statut{display:none;}
+
+#prenomEnCours{
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 45px;
+}
 </style>
 
 <input id="btnPlay" type="button" value="Play">
-<input id="btnPause" type="button" value="Pause">
+<input disabled id="btnPause" type="button" value="Pause">
 
 
 <h1 id="timer">00:00</h1>
 
 
-<div id="statut">Jeu en pause</div>
+<div id="statut"><input disabled type="button" value="prev" id="btnPrev"><span id="prenomEnCours"></span><input type="button" value="next" id="btnNext"></div>
 
 
 
@@ -20,14 +26,35 @@
 
 <script>
 
-//Quand on clique sur btnPlay => le timer se lance et apparait, statut doit disparaitre (* btnPlay doit etre disabled)
-//Quand on clique sur btnPause => le timer se stop, statut doit apparaitre (* btnPause doit etre disabled)
+  var zoom = ["Jordan","Alae","Amélia","Louis"];
+  var index=0;
+  prenomEnCours.innerHTML="    "+zoom[index]+"    ";
 
   var min=0;
   var sec=0;
+  var  inter;
+  btnPlay.onclick = start;
+  btnPause.onclick= pause;
 
   //setInterval(chrono,1000);
 
+function start()
+{
+  inter=setInterval(chrono,1000);
+  timer.style.display="block";
+  statut.style.display="block";
+  btnPlay.disabled=true;
+  btnPause.disabled=false;
+}
+
+function pause()
+{
+  clearInterval(inter);
+  statut.style.display="none";
+  btnPlay.removeAttribute("disabled",false);
+  btnPause.setAttribute("disabled",true);
+
+}
 
   function calculTimer()
   {

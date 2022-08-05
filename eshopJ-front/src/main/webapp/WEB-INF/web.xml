@@ -9,7 +9,15 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
   <listener>
     <listener-class>eshop.listener.StartListener</listener-class>
   </listener>
+  
+  
+  
+  
+  
+  
+  
 </web-app>

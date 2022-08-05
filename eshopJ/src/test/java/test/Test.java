@@ -21,6 +21,10 @@ public class Test {
 		Fournisseur f = new Fournisseur("Abid","Jordan","AJC");
 		Produit p = new Produit("Formation Java",1800.75,f);
 		
+		Produit p2 = new Produit("Formation Algo",1800.75,f);
+		
+		Produit p3 = new Produit("Formation JSP",1800.75,f);
+		
 		Achat achat = new Achat(c,p);
 		f.setAdresse(a);
 		
@@ -35,6 +39,9 @@ public class Test {
 		em.persist(f);
 		em.persist(p);
 		em.persist(c);
+		em.persist(p2);
+		
+		em.persist(p3);
 		em.persist(achat);
 		
 		em.getTransaction().commit();

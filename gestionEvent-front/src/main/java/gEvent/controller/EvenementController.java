@@ -1,6 +1,8 @@
 package gEvent.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,31 +12,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import gEvent.context.Singleton;
+import gEvent.model.Adresse;
+import gEvent.model.Competition;
+import gEvent.model.Compte;
+import gEvent.model.Evenement;
+import gEvent.model.Festival;
 import gEvent.model.Intervenant;
+import gEvent.model.Sport;
 import gEvent.model.Talent;
+import gEvent.model.User;
 
 @WebServlet("/evenements")
 public class EvenementController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setAttribute("talents", Talent.values());
+		//request.setAttribute("talents", Talent.values());
 		
 		if(request.getParameter("id")==null) 
 		{
-			List<Intervenant> intervenants = Singleton.getInstance().getDaoIntervenant().findAll();
+			List<Evenement> evenements = Singleton.getInstance().getDaoEvenement().findAll();
 		
-			request.setAttribute("intervenants",intervenants);
+			request.setAttribute("evenements",evenements);
 		
-			this.getServletContext().getRequestDispatcher("/WEB-INF/intervenants.jsp").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/evenements.jsp").forward(request, response);
 		}
 		else 
 		{
 			Integer id = Integer.parseInt(request.getParameter("id"));
 			
-			Intervenant i = Singleton.getInstance().getDaoIntervenant().findById(id);
-			request.setAttribute("intervenant", i);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/updateIntervenant.jsp").forward(request, response);
+			Evenement e = Singleton.getInstance().getDaoEvenement().findById(id);
+			request.setAttribute("evenement", e);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/updateEvenement.jsp").forward(request, response);
 
 			
 		}
@@ -51,47 +60,81 @@ public class EvenementController extends HttpServlet {
 		
 		if(tache.equals("ajouter")) 
 		{
-			String nom = request.getParameter("nom");
-			Intervenant i = new Intervenant(nom);
-
-			for(Talent t : Talent.values()) 
-			{
-				if(request.getParameter(t.toString())!=null) 
-				{
-				 i.getTalents().add(t);	
-				}
+			String libelle = request.getParameter("libelle");
+			LocalDate dateDebut = LocalDate.parse(request.getParameter("dateDebut"));
+			LocalDate dateFin = LocalDate.parse(request.getParameter("dateFin"));
+			LocalTime heureDebut = LocalTime.parse(request.getParameter("heureDebut"));
+			LocalTime heureFin = LocalTime.parse(request.getParameter("heureFin"));
+			double prix = Double.parseDouble(request.getParameter("prix"));
+			
+			String numero = request.getParameter("numero");
+			String voie = request.getParameter("voie");
+			String ville = request.getParameter("ville");
+			String cp = request.getParameter("cp");
+			String type = request.getParameter("typeEvenement");
+			
+			Adresse adresse = new Adresse(numero, voie, ville, cp);
+			
+			Evenement e;
+			if(type.equals("festival")) {
+				e = new Festival(libelle, dateDebut, heureDebut, dateFin, heureFin, prix, adresse);
+			} else {
+				Sport sport = Sport.valueOf(request.getParameter("sport"));
+				e = new Competition(libelle, dateDebut, heureDebut, dateFin, heureFin, prix, sport, adresse);
 			}
-			Singleton.getInstance().getDaoIntervenant().save(i);
+			
+			Singleton.getInstance().getDaoEvenement().save(e);
 		}
+		
 		
 		else if(tache.equals("modifier")) 
 		{
 			Integer id = Integer.parseInt(request.getParameter("id"));
 			//J
-			int version = Singleton.getInstance().getDaoIntervenant().findById(id).getVersion();
+			int version = Singleton.getInstance().getDaoEvenement().findById(id).getVersion();
 			
 			
-			String nom = request.getParameter("nom");
-			Intervenant i = new Intervenant(nom);
-			i.setId(id);
-			i.setVersion(version);
-			for(Talent t : Talent.values()) 
-			{
-				if(request.getParameter(t.toString())!=null) 
-				{
-				 i.getTalents().add(t);	
-				}
+			String libelle = request.getParameter("libelle");
+			LocalDate dateDebut = LocalDate.parse(request.getParameter("dateDebut"));
+			LocalDate dateFin = LocalDate.parse(request.getParameter("dateFin"));
+			LocalTime heureDebut = LocalTime.parse(request.getParameter("heureDebut"));
+			LocalTime heureFin = LocalTime.parse(request.getParameter("heureFin"));
+			double prix = Double.parseDouble(request.getParameter("prix"));
+			
+			String numero = request.getParameter("numero");
+			String voie = request.getParameter("voie");
+			String ville = request.getParameter("ville");
+			String cp = request.getParameter("cp");
+			String type = request.getParameter("typeEvenement");
+			Integer gagnant_id = Integer.parseInt(request.getParameter("gagnant"));
+			
+			User compte_gagnant = (User) Singleton.getInstance().getDaoCompte().findById(gagnant_id);
+			
+			Adresse adresse = new Adresse(numero, voie, ville, cp);
+			
+			Evenement e;
+			if(type.equals("festival")) {
+				e = new Festival(libelle, dateDebut, heureDebut, dateFin, heureFin, prix, adresse);
+			} else {
+				Sport sport = Sport.valueOf(request.getParameter("sport"));
+				e = new Competition(libelle, dateDebut, heureDebut, dateFin, heureFin, prix, sport, adresse);
+				((Competition)e).setGagnant(compte_gagnant);
 			}
-			Singleton.getInstance().getDaoIntervenant().save(i);
+			
+			e.setId(id);
+			e.setVersion(version);
+			Singleton.getInstance().getDaoEvenement().save(e);
 		}
+		
+		
 		else if(tache.equals("supprimer")) 
 		{
 			Integer id = Integer.parseInt(request.getParameter("id"));
 
-			Singleton.getInstance().getDaoIntervenant().delete(id);
+			Singleton.getInstance().getDaoEvenement().delete(id);
 		}
 		
-		response.sendRedirect("intervenants");
+		response.sendRedirect("evenements");
 	}
 
 }

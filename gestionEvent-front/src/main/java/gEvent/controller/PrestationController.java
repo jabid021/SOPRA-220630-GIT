@@ -32,7 +32,6 @@ public class PrestationController extends HttpServlet {
 		{
 			
 			List<Prestation> prestations= Singleton.getInstance().getDaoPrestation().findAll();
-			System.out.println(prestations);
 			request.setAttribute("prestations", prestations);
 			
 			

@@ -1,4 +1,4 @@
-
+ï»¿
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +11,10 @@
 	<form action="prestations" method="post">
 		<input type="hidden" name="tache" value="modifier"> <input
 			type="hidden" name="id" value="${prestation.id}"> 
-			Date de début : <input required name="date_debut" type="date"
-			placeholder="date de début" value="${prestation.dateDebut}"><br>
-		Heure de début : <input required name="heure_debut" type="time"
-			placeholder="heure de début" value="${prestation.heureDebut}"><br>
+			Date de dÃ©but : <input required name="date_debut" type="date"
+			placeholder="date de dÃ©but" value="${prestation.dateDebut}"><br>
+		Heure de dÃ©but : <input required name="heure_debut" type="time"
+			placeholder="heure de dÃ©but" value="${prestation.heureDebut}"><br>
 		Date de fin : <input required name="date_fin" type="date"
 			placeholder="date de fin" value="${prestation.dateFin}"><br>
 		Heure de fin : <input required name="heure_fin" type="time"

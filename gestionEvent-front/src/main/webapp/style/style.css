@@ -37,8 +37,7 @@ header img:nth-child(1)
 
 footer
 {
-	position:absolute;
-	bottom:0;
+
 	background-color : yellow;
 	width:100%;
 	display:flex;

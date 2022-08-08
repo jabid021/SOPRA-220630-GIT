@@ -19,9 +19,7 @@ import gEvent.model.User;
 public class UserController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("TEST");
-		
+
 		if(request.getParameter("id")==null) 
 		{
 			List<User> comptes = Singleton.getInstance().getDaoCompte().findAllUsers();
@@ -48,10 +46,10 @@ public class UserController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		String redirect="users";
 		String tache = request.getParameter("tache");
 		
-		if(tache.equals("ajouter")) 
+		if(tache.equals("ajouter") || tache.equals("inscription")) 
 		{
 			String login = request.getParameter("login");
 			String password = request.getParameter("password");
@@ -65,14 +63,17 @@ public class UserController extends HttpServlet {
 			String ville = request.getParameter("ville");
 			
 			
-			
-			
 			Adresse a = new Adresse(numVoie,nomVoie,ville,cp);
 			Compte u = new User(login,password,nom,prenom,naissance,tel,a);
 
 
 	
 			Singleton.getInstance().getDaoCompte().save(u);
+			if(tache.equals("inscription")) 
+			{
+				
+				redirect="home";
+			}
 		}
 		else if(tache.equals("modifier")) 
 		{
@@ -107,7 +108,7 @@ public class UserController extends HttpServlet {
 			Singleton.getInstance().getDaoCompte().delete(id);
 		}
 		
-		response.sendRedirect("users");
+		response.sendRedirect(redirect);
 	}
 
 }

@@ -1,4 +1,4 @@
-
+ï»¿
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +6,6 @@
 <title>Fiche User</title>
 </head>
 <body>
-
 	<h1>Modifier User</h1>
 
 	<form action="users" method="post">
@@ -27,7 +26,7 @@
 		</table>
 
 
-		<h3>Utilisateur Détails</h3>
+		<h3>Utilisateur DÃ©tails</h3>
 
 		<table>
 			<tr>
@@ -36,7 +35,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Prénom</td>
+				<td>PrÃ©nom</td>
 				<td><input required name="prenom" type="text"
 					value="${user.prenom}"></td>
 			</tr>
@@ -47,7 +46,7 @@
 					value="${user.naissance}"></td>
 			</tr>
 			<tr>
-				<td>Téléphone :</td>
+				<td>TÃ©lÃ©phone :</td>
 				<td><input required name="tel" type="text" value="${user.telephone}">
 				</td>
 			</tr>

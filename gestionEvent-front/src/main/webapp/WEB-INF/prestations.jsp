@@ -1,4 +1,4 @@
-
+ï»¿
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,8 +63,8 @@
 
 		<form action="prestations" method="post">
 			<input type="hidden" value="ajouter" name="tache"> 
-			Date début : <input name="date_debut" type="date"><br> <br>
-			Heure début: <input name="heure_debut" type="time"><br>
+			Date dÃ©but : <input name="date_debut" type="date"><br> <br>
+			Heure dÃ©but: <input name="heure_debut" type="time"><br>
 			<br> Date fin : <input name="date_fin" type="date"><br>
 			<br> Heure fin : <input name="heure_fin" type="time"><br>
 			<br> Intervenant : <select name="intervenant">
@@ -81,7 +81,7 @@
 		</form>
 	</div>
 
-	<a href="prestations"><button type="button">Retour</button></a>
+	<a href="menu"><button type="button">Retour</button></a>
 
 
 </body>

@@ -94,7 +94,7 @@ public class DAOEvenement implements IDAOEvenement {
 			ex.printStackTrace();
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
-			}
+			}	
 		}
 		finally 
 		{
@@ -131,7 +131,7 @@ public class DAOEvenement implements IDAOEvenement {
 		try {
 
 			em = Singleton.getInstance().getEmf().createEntityManager();
-			competition = (Competition) em.createQuery("SELECT c from Competition c join fetch c.participants where c.id=:id").setParameter("id", id).getSingleResult();
+			competition = (Competition) em.createQuery("SELECT c from Competition c left join fetch c.participants where c.id=:id").setParameter("id", id).getSingleResult();
 		}catch(Exception e) {e.printStackTrace();}
 		finally {
 			if(em!=null) 
@@ -149,7 +149,7 @@ public class DAOEvenement implements IDAOEvenement {
 		try {
 
 			em = Singleton.getInstance().getEmf().createEntityManager();
-			evenement = (Evenement) em.createQuery("SELECT e from Evenement e join fetch e.spectateurs where e.id=:id").setParameter("id", id).getSingleResult();
+			evenement = (Evenement) em.createQuery("SELECT e from Evenement e left join fetch e.spectateurs where e.id=:id").setParameter("id", id).getSingleResult();
 		}catch(Exception e) {e.printStackTrace();}
 		finally {
 			if(em!=null) 
@@ -167,7 +167,7 @@ public class DAOEvenement implements IDAOEvenement {
 		try {
 
 			em = Singleton.getInstance().getEmf().createEntityManager();
-			festival = (Festival) em.createQuery("SELECT f from Festival f join fetch f.prestations where f.id=:id").setParameter("id", id).getSingleResult();
+			festival = (Festival) em.createQuery("SELECT f from Festival f left join fetch f.prestations where f.id=:id").setParameter("id", id).getSingleResult();
 		}catch(Exception e) {e.printStackTrace();}
 		finally {
 			if(em!=null) 

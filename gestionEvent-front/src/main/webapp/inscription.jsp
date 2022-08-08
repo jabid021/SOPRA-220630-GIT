@@ -9,7 +9,7 @@
 
 
  <form action="users" method="post">
-   <input type="hidden" value="ajouter" name="tache">
+   <input type="hidden" value="inscription" name="tache">
 
      <legend>INSCRIPTION</legend>
      <table>

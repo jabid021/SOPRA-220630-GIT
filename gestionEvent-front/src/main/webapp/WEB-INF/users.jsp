@@ -1,6 +1,5 @@
-<html>
+﻿<html>
 <body>
-
 	<title>Gestion Users</title>
 	<h2>Tableau des Utilisateurs :</h2>
 
@@ -81,7 +80,7 @@
 				<tr>
 					<td>Mot de passe :</td>
 					<td><input name="password" required pattern="[A-9]{4,8}"
-						title="4 � 8 lettres !" placeholder="Saisir password"
+						title="4 à 8 lettres !" placeholder="Saisir password"
 						type="password"></td>
 				</tr>
 				<tr>
@@ -110,7 +109,7 @@
 				<tr>
 					<td>voie :</td>
 					<td><input required name="nomVoie" type="text"
-						placeholder="nvoie"></td>
+						placeholder="voie"></td>
 				</tr>
 				<tr>
 					<td>ville :</td>

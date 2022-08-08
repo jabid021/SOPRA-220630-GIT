@@ -118,6 +118,7 @@ public class EvenementController extends HttpServlet {
 			String type = request.getParameter("typeEvenement");
 			
 			
+			System.out.println(ville);
 			
 			
 			Adresse adresse = new Adresse(numero, voie, ville, cp);
@@ -127,7 +128,10 @@ public class EvenementController extends HttpServlet {
 				e = new Festival(libelle, dateDebut, heureDebut, dateFin, heureFin, prix, adresse);
 			} else {
 				Integer gagnant_id = Integer.parseInt(request.getParameter("gagnant"));
-				User compte_gagnant = (User) Singleton.getInstance().getDaoCompte().findById(gagnant_id);
+				User compte_gagnant=null;
+				if(gagnant_id!=-1) {
+				compte_gagnant = (User) Singleton.getInstance().getDaoCompte().findById(gagnant_id);}
+				
 				Sport sport = Sport.valueOf(request.getParameter("sport"));
 				e = new Competition(libelle, dateDebut, heureDebut, dateFin, heureFin, prix, sport, adresse);
 				((Competition)e).setGagnant(compte_gagnant);

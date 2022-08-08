@@ -3,6 +3,7 @@ package gEvent.controller;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -18,6 +19,7 @@ import gEvent.model.Compte;
 import gEvent.model.Evenement;
 import gEvent.model.Festival;
 import gEvent.model.Intervenant;
+import gEvent.model.Participation;
 import gEvent.model.Sport;
 import gEvent.model.Talent;
 import gEvent.model.User;
@@ -43,12 +45,20 @@ public class EvenementController extends HttpServlet {
 			
 			Evenement e = Singleton.getInstance().getDaoEvenement().findById(id);
 			request.setAttribute("evenement", e);
+			if (e instanceof Competition) {
+				List<Participation> participations = Singleton.getInstance().getDaoEvenement().findByIdWithParticipations(id).getParticipants();
+				List<User> users = new ArrayList();
+				for (Participation p : participations) {
+					users.add(p.getUser());
+				}
+				request.setAttribute("participants", users);
+				
+			}
+			
 			this.getServletContext().getRequestDispatcher("/WEB-INF/updateEvenement.jsp").forward(request, response);
 
-			
 		}
-		
-		
+
 	}
 	
 
@@ -106,9 +116,9 @@ public class EvenementController extends HttpServlet {
 			String ville = request.getParameter("ville");
 			String cp = request.getParameter("cp");
 			String type = request.getParameter("typeEvenement");
-			Integer gagnant_id = Integer.parseInt(request.getParameter("gagnant"));
 			
-			User compte_gagnant = (User) Singleton.getInstance().getDaoCompte().findById(gagnant_id);
+			
+			
 			
 			Adresse adresse = new Adresse(numero, voie, ville, cp);
 			
@@ -116,6 +126,8 @@ public class EvenementController extends HttpServlet {
 			if(type.equals("festival")) {
 				e = new Festival(libelle, dateDebut, heureDebut, dateFin, heureFin, prix, adresse);
 			} else {
+				Integer gagnant_id = Integer.parseInt(request.getParameter("gagnant"));
+				User compte_gagnant = (User) Singleton.getInstance().getDaoCompte().findById(gagnant_id);
 				Sport sport = Sport.valueOf(request.getParameter("sport"));
 				e = new Competition(libelle, dateDebut, heureDebut, dateFin, heureFin, prix, sport, adresse);
 				((Competition)e).setGagnant(compte_gagnant);

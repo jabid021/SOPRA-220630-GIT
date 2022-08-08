@@ -1,0 +1,16 @@
+body{margin:5px;background: #F4EFE7;}
+
+
+#error
+{
+	color:red;
+}
+
+
+#formAjout{display:none;}
+
+.btnViolet,.btnViolet:hover
+{
+	color:white;
+	background-color:purple;
+}

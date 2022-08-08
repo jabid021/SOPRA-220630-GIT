@@ -1,15 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<!--<%@ include file="/libs.jsp"  %>-->
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+
 <title>Page Produits</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="style/style.css">
+
 </head>
 <body>
 
@@ -35,8 +30,7 @@
 					<td>${p.id}</td>
 					<td>${p.libelle}</td>
 					<td>${p.prix}</td>
-					<td>${p.fournisseur.nom}
-						${p.fournisseur.prenom} -
+					<td>${p.fournisseur.nom}${p.fournisseur.prenom}-
 						${p.fournisseur.societe}</td>
 					<td><a href="produits?id=${p.id}"><button
 								class="btn btn-warning">Modifier</button></a>
@@ -46,8 +40,6 @@
 								type="submit" class="btn btn-danger" value="Supprimer">
 						</form></td>
 				</tr>
-
-
 			</c:forEach>
 
 
@@ -61,20 +53,18 @@
 				Prix : <input type="number" step="0.01" name="prix"
 					placeholder="Prix"><br> Fournisseur : <select
 					name="fournisseur">
-					<option value="1">Abid Jordan</option>
-					<option value="3">Abid Jordan2</option>
+					<c:forEach items="${fournisseurs}" var="f">
+						<option value="${f.id}">${f.nom} ${f.prenom}</option>
+					</c:forEach>
 				</select><br> <input type="submit" class="btn btn-primary"
 					value="Ajouter">
+
+			</form>
+
 		</div>
 
-
-
-
-
-
-		</form>
-
 	</div>
+
 </body>
 </html>
 

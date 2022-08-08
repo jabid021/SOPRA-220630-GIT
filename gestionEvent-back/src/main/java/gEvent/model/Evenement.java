@@ -12,19 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-
-@NamedQueries({ 
-@NamedQuery( 
-name="Produit.findByLibelle", 
-query="select p from Produit p where p.libelle = :lelibelle") 
-})
 
 public abstract class Evenement {
 	

@@ -1,0 +1,1 @@
+<h1>Pied de page include dans toutes les jsp dans web.xml</h1>

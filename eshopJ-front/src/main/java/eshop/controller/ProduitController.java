@@ -18,6 +18,10 @@ public class ProduitController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		List<Fournisseur> fournisseurs = Singleton.getInstance().getDaoPersonne().findAllFournisseur();
+		request.setAttribute("fournisseurs",fournisseurs);
+		
 		//S'il n'y a pas d'id en parametre, on veut un faire un findAll pour afficher notre tableau
 		if(request.getParameter("id")==null) 
 		{
@@ -25,6 +29,7 @@ public class ProduitController extends HttpServlet {
 			
 			
 			request.setAttribute("produits",produits);
+		
 			
 			this.getServletContext().getRequestDispatcher("/WEB-INF/produits.jsp").forward(request, response);
 		}

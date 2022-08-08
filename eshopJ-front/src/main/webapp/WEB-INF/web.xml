@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-  <display-name>eshopJ-front</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
-  
-  <listener>
-    <listener-class>eshop.listener.StartListener</listener-class>
-  </listener>
-  
-  
-  
-  
-  
-  
-  
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<display-name>eshopJ-front</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	<listener>
+		<listener-class>eshop.listener.StartListener</listener-class>
+	</listener>
+
+
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<include-prelude>/libs.jsp</include-prelude>
+		</jsp-property-group>
+
+	
+	<!--	<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<include-coda>/footer.jsp</include-coda>
+		</jsp-property-group>
+	-->
+	</jsp-config>
+
+
+
+
+
+
+
 </web-app>

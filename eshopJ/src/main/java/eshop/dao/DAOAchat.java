@@ -7,20 +7,19 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import eshop.context.Singleton;
-import eshop.model.Fournisseur;
-import eshop.model.Personne;
+import eshop.model.Achat;
 
-public class DAOPersonne implements IDAOPersonne {
+public class DAOAchat implements IDAOAchat {
 
 
 
 	@Override
-	public Personne findById(Integer id) {
-		Personne m = null;
+	public Achat findById(Integer id) {
+		Achat m = null;
 		EntityManager em = null;
 		try {
 			em = Singleton.getInstance().getEmf().createEntityManager();
-			m = em.find(Personne.class, id);
+			m = em.find(Achat.class, id);
 		}
 		catch(Exception e) {e.printStackTrace();}
 		finally {
@@ -31,13 +30,13 @@ public class DAOPersonne implements IDAOPersonne {
 	}
 
 	@Override
-	public List<Personne> findAll() {
-		List<Personne> personnes =new ArrayList();
+	public List<Achat> findAll() {
+		List<Achat> personnes =new ArrayList();
 		EntityManager em = null;
 		try {
 
 			em = Singleton.getInstance().getEmf().createEntityManager();
-			personnes = em.createQuery("from Personne").getResultList();
+			personnes = em.createQuery("from Achat").getResultList();
 		}catch(Exception e) {e.printStackTrace();}
 		finally {
 			if(em!=null) 
@@ -49,7 +48,7 @@ public class DAOPersonne implements IDAOPersonne {
 	}
 
 	@Override
-	public Personne save(Personne p) {
+	public Achat save(Achat p) {
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -88,7 +87,7 @@ public class DAOPersonne implements IDAOPersonne {
 			em = Singleton.getInstance().getEmf().createEntityManager();
 			tx=em.getTransaction();
 			tx.begin();
-			Personne m = em.find(Personne.class, id);
+			Achat m = em.find(Achat.class, id);
 			em.remove(m);
 			tx.commit();
 		}
@@ -106,35 +105,5 @@ public class DAOPersonne implements IDAOPersonne {
 			}
 		}
 	
-	}
-
-	@Override
-	public Personne seConnecter(String login, String password) {
-		Personne p = null;
-		try {
-			EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-			p = (Personne) em.createQuery("SELECT p from Personne p where p.login=:login and p.password=:password").setParameter("login",login).setParameter("password",password).getSingleResult();
-		}
-		catch(Exception e) {e.printStackTrace();}
-		return p;
-	}
-	
-	
-	@Override
-	public List<Fournisseur> findAllFournisseur() {
-		List<Fournisseur> personnes =new ArrayList();
-		EntityManager em = null;
-		try {
-
-			em = Singleton.getInstance().getEmf().createEntityManager();
-			personnes = em.createQuery("from Fournisseur").getResultList();
-		}catch(Exception e) {e.printStackTrace();}
-		finally {
-			if(em!=null) 
-			{
-				em.close();
-			}
-		}
-		return personnes;
 	}
 }

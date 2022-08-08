@@ -1,6 +1,7 @@
 package gEvent.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,33 +11,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import gEvent.context.Singleton;
-import gEvent.model.Intervenant;
-import gEvent.model.Talent;
+import gEvent.model.Adresse;
+import gEvent.model.Compte;
+import gEvent.model.User;
 
 @WebServlet("/users")
 public class UserController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setAttribute("talents", Talent.values());
+		System.out.println("TEST");
 		
 		if(request.getParameter("id")==null) 
 		{
-			List<Intervenant> intervenants = Singleton.getInstance().getDaoIntervenant().findAll();
+			List<User> comptes = Singleton.getInstance().getDaoCompte().findAllUsers();
 		
-			request.setAttribute("intervenants",intervenants);
+			request.setAttribute("users",comptes);
 		
-			this.getServletContext().getRequestDispatcher("/WEB-INF/intervenants.jsp").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
 		}
 		else 
 		{
+		
+			
 			Integer id = Integer.parseInt(request.getParameter("id"));
 			
-			Intervenant i = Singleton.getInstance().getDaoIntervenant().findById(id);
-			request.setAttribute("intervenant", i);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/updateIntervenant.jsp").forward(request, response);
-
-			
+			User user= (User) Singleton.getInstance().getDaoCompte().findById(id);
+			request.setAttribute("user", user);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/updateUser.jsp").forward(request, response);
+		
 		}
 		
 		
@@ -48,50 +51,63 @@ public class UserController extends HttpServlet {
 		
 		String tache = request.getParameter("tache");
 		
-		
 		if(tache.equals("ajouter")) 
 		{
+			String login = request.getParameter("login");
+			String password = request.getParameter("password");
 			String nom = request.getParameter("nom");
-			Intervenant i = new Intervenant(nom);
+			String prenom = request.getParameter("prenom");
+			LocalDate naissance = LocalDate.parse(request.getParameter("dateNaissance"));
+			String tel = request.getParameter("tel");
+			String numVoie = request.getParameter("numVoie");
+			String nomVoie = request.getParameter("nomVoie");
+			String cp = request.getParameter("cp");
+			String ville = request.getParameter("ville");
+			
+			
+			
+			
+			Adresse a = new Adresse(numVoie,nomVoie,ville,cp);
+			Compte u = new User(login,password,nom,prenom,naissance,tel,a);
 
-			for(Talent t : Talent.values()) 
-			{
-				if(request.getParameter(t.toString())!=null) 
-				{
-				 i.getTalents().add(t);	
-				}
-			}
-			Singleton.getInstance().getDaoIntervenant().save(i);
+
+	
+			Singleton.getInstance().getDaoCompte().save(u);
 		}
-		
 		else if(tache.equals("modifier")) 
 		{
 			Integer id = Integer.parseInt(request.getParameter("id"));
-			//J
-			int version = Singleton.getInstance().getDaoIntervenant().findById(id).getVersion();
+			
+			int version = Singleton.getInstance().getDaoCompte().findById(id).getVersion();
 			
 			
+			String login = request.getParameter("login");
+			String password = request.getParameter("password");
 			String nom = request.getParameter("nom");
-			Intervenant i = new Intervenant(nom);
-			i.setId(id);
-			i.setVersion(version);
-			for(Talent t : Talent.values()) 
-			{
-				if(request.getParameter(t.toString())!=null) 
-				{
-				 i.getTalents().add(t);	
-				}
-			}
-			Singleton.getInstance().getDaoIntervenant().save(i);
+			String prenom = request.getParameter("prenom");
+			LocalDate naissance = LocalDate.parse(request.getParameter("dateNaissance"));
+			String tel = request.getParameter("tel");
+			String numVoie = request.getParameter("numVoie");
+			String nomVoie = request.getParameter("nomVoie");
+			String cp = request.getParameter("cp");
+			String ville = request.getParameter("ville");
+			
+			Adresse a = new Adresse(numVoie,nomVoie,ville,cp);
+			User u = new User(login,password,nom,prenom,naissance,tel,a);
+			
+			u.setId(id);
+			u.setVersion(version);
+			
+			Singleton.getInstance().getDaoCompte().save(u);
 		}
 		else if(tache.equals("supprimer")) 
 		{
 			Integer id = Integer.parseInt(request.getParameter("id"));
 
-			Singleton.getInstance().getDaoIntervenant().delete(id);
+			Singleton.getInstance().getDaoCompte().delete(id);
 		}
 		
-		response.sendRedirect("intervenants");
+		response.sendRedirect("users");
 	}
 
 }

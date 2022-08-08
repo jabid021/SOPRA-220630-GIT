@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import gEvent.context.Singleton;
 import gEvent.model.Compte;
 import gEvent.model.Festival;
+import gEvent.model.User;
 
 public class DAOCompte implements IDAOCompte {
 
@@ -192,6 +193,24 @@ public class DAOCompte implements IDAOCompte {
 			}
 		}
 		return compte;
+	}
+
+	@Override
+	public List<User> findAllUsers() {
+		List<User> personnes =new ArrayList();
+		EntityManager em = null;
+		try {
+
+			em = Singleton.getInstance().getEmf().createEntityManager();
+			personnes = em.createQuery("from User").getResultList();
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+			if(em!=null) 
+			{
+				em.close();
+			}
+		}
+		return personnes;
 	}
 
 }

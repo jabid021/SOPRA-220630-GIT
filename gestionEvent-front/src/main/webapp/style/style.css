@@ -14,3 +14,35 @@ body{margin:5px;background: #F4EFE7;}
 	color:white;
 	background-color:purple;
 }
+
+header
+{
+	display:flex;
+	
+	border:solid black 2px;
+	margin-bottom : 30px;
+}
+
+header img:nth-child(1)
+{
+	width:20%;
+	height:100px;
+}
+
+header img:nth-child(1)
+{
+	width:80%;
+	height:100px;
+}
+
+footer
+{
+	position:absolute;
+	bottom:0;
+	background-color : yellow;
+	width:100%;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	height:75px;
+}

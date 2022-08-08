@@ -9,3 +9,5 @@
 <link rel="stylesheet" href="style/style.css">
 
 <meta charset="utf-8">
+<link rel="icon"  href="assets/img/events.png">
+<%@ include file="banniere.jsp"  %>

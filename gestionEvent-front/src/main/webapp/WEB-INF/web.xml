@@ -14,7 +14,12 @@
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>*.jsp</url-pattern>
-			<include-prelude>/libs.jsp</include-prelude>
+			<include-prelude>/includes/libs.jsp</include-prelude>
+		</jsp-property-group>
+		
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<include-coda>/includes/footer.jsp</include-coda>
 		</jsp-property-group>
 	</jsp-config>
   

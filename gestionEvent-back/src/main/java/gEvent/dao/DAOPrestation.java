@@ -38,6 +38,7 @@ public class DAOPrestation implements IDAOPrestation {
 
 			em = Singleton.getInstance().getEmf().createEntityManager();
 			prestations = em.createQuery("from Prestation").getResultList();
+			System.out.println(prestations);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

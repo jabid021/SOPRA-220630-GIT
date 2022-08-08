@@ -18,5 +18,6 @@ public interface IDAOEvenement extends IDAO<Evenement,Integer>{
 	
 	public List<Competition> findAllByGagnant(Integer idUser); 
 	
+	public List<Festival> findAllFestival();
 	
 }

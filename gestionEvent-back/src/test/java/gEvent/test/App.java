@@ -408,13 +408,13 @@ public class App {
 	}
 	public static void main(String[] args) {
 
-		Compte c = daoC.findById(2);
+		/*Compte c = daoC.findById(2);
 	
 		c.setLogin("exemple3");
 		
 		saisieInt("attente...");
 		
-		daoC.save(c);
+		daoC.save(c);*/
 		
 		
 		//menuPrincipal();

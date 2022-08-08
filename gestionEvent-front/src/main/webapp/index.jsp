@@ -28,7 +28,7 @@
 	</form>
 
 	<span>Vous n'êtes pas encore inscrit ? <a
-		href="inscription.html">S'inscrire</a></span>
+		href="inscription.jsp">S'inscrire</a></span>
 
 
 </body>

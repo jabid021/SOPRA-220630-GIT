@@ -196,4 +196,23 @@ public class DAOEvenement implements IDAOEvenement {
 		return competitions;
 	}
 
+	@Override
+	public List<Festival> findAllFestival() {
+		List<Festival> festivals =new ArrayList();
+		EntityManager em = null;
+		try {
+
+			em = Singleton.getInstance().getEmf().createEntityManager();
+			festivals = em.createQuery("from Festival").getResultList();
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+			if(em!=null) 
+			{
+				em.close();
+			}
+		}
+		return festivals;
+	
+	}
+
 }

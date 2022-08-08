@@ -14,10 +14,10 @@
 			<property name="hibernate.connection.driver"
 				value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.connection.url"
-				value="jdbc:mysql://localhost:3306/gestion_event" />
+				value="jdbc:mysql://localhost:8889/gestion_event" />
 			<property name="hibernate.connection.user" value="root" />
 			<property name="hibernate.connection.password"
-				value="" />
+				value="root" />
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			<!-- validate, create, update -->

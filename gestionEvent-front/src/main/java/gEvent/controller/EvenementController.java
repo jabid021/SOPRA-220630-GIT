@@ -117,10 +117,6 @@ public class EvenementController extends HttpServlet {
 			String cp = request.getParameter("cp");
 			String type = request.getParameter("typeEvenement");
 			
-			
-			System.out.println(ville);
-			
-			
 			Adresse adresse = new Adresse(numero, voie, ville, cp);
 			
 			Evenement e;

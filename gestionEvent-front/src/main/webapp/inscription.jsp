@@ -1,4 +1,4 @@
-
+ï»¿
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,20 +26,20 @@
          <td><input type="text" name="nom" placeholder="nom" required></td>
        </tr>
        <tr>
-         <td><label for="prenom">Prénom</label></td>
-         <td><input type="text" name="prenom" placeholder="prénom" required></td>
+         <td><label for="prenom">PrÃ©nom</label></td>
+         <td><input type="text" name="prenom" placeholder="prÃ©nom" required></td>
        </tr>
        <tr>
          <td><label>Date de naissance</label></td>
          <td><input type="date" name="dateNaissance" placeholder="date de naissance" required></td>
        </tr>
        <tr>
-         <td><label for="tel">Téléphone</label></td>
+         <td><label for="tel">TÃ©lÃ©phone</label></td>
          <td><input type="tel" name="tel" pattern="[0-9]{10}" placeholder="0XXXXXXX" required></td>
        </tr>
        <tr>
-         <td><label for="numVoie">Numéro de voie</label></td>
-         <td><input type="text" name="numVoie" placeholder="N° de voie" required></td>
+         <td><label for="numVoie">NumÃ©ro de voie</label></td>
+         <td><input type="text" name="numVoie" placeholder="NÂ° de voie" required></td>
        </tr>
        <tr>
          <td><label for="nomVoie">Nom de voie</label></td>

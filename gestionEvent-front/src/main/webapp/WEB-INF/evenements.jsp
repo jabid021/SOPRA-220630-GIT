@@ -59,7 +59,7 @@
 							<td>${e.sport}</td>
 							<c:choose>
 								<c:when test="${e.gagnant!=null}">
-									<td>${e.gagnant.id}</td>
+									<td>${e.gagnant.id} - ${e.gagnant.prenom} ${e.gagnant.nom}</td>
 								</c:when>
 								<c:otherwise>
 									<td>Pas de gagnant</td>
@@ -68,8 +68,8 @@
 
 						</c:when>
 						<c:otherwise>
-							<td>-</td>
-							<td>-</td>
+							<td>/</td>
+							<td>/</td>
 						</c:otherwise>
 					</c:choose>
 					<td><a href="evenements?id=${e.id}"><button

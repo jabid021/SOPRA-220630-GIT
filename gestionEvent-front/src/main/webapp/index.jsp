@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,7 @@
 			<div id="error">${error}</div>
 	</form>
 
-	<span>Vous n'�tes pas encore inscrit ? <a
+	<span>Vous n'êtes pas encore inscrit ? <a
 		href="inscription.jsp">S'inscrire</a></span>
 
 

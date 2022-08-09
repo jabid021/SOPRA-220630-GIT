@@ -3,11 +3,11 @@ package orchestre.model;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Guitare implements IInstrument{
+public class Ukulele implements IInstrument{
 
 	@Override
 	public String son() {
-		return "La guitare fait glink glink";
+		return "La ukulele fait ulink ulink";
 	}
 
 }

@@ -2,15 +2,21 @@ package orchestre.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Guitariste implements IMusicien{
 	
 	@Autowired
-	@Qualifier("piano")
+	@Qualifier("guitare")
 	private IInstrument instrument;
 	
+	/*public Guitariste(Guitare instrument) {
+		System.out.println("Le guitariste equipe sa "+instrument.getClass().getSimpleName());
+	}*/
+	
+	
 	public Guitariste() {
-		//System.out.println("Le guitariste equipe sa "+instrument.getClass().getSimpleName());
 	}
 	
 	public IInstrument getInstrument() {

@@ -1,20 +1,25 @@
 package orchestre.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Pianiste implements IMusicien{
 	
-	private Piano instrument;
+	@Autowired
+	private Synthe instrument;
 	
 	public Pianiste() {
 		//System.out.println("Le pianiste equipe son "+instrument.getClass().getSimpleName());
 	}
 	
-	public Piano getInstrument() {
+	public Synthe getInstrument() {
 		return instrument;
 	}
 
 
 
-	public void setInstrument(Piano instrument) {
+	public void setInstrument(Synthe instrument) {
 		this.instrument = instrument;
 	}
 

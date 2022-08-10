@@ -12,7 +12,7 @@ import eshop.model.Client;
 import eshop.model.Fournisseur;
 import eshop.model.Produit;
 
-public class Test {
+public class InitBdd {
 
 	public static void main(String[] args) {
 		

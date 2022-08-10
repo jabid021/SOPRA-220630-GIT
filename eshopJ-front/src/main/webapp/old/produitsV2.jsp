@@ -2,7 +2,7 @@
 	pageEncoding="utf-8"%>
 	<%@ page import="java.util.List" %>
 	<%@ page import="eshop.model.Produit" %>
-	<%@ page import="eshop.context.Singleton" %>
+	<%@ page import="orchestre.context.Singleton" %>
 <!DOCTYPE html>
 <html>
 <head>

@@ -3,16 +3,16 @@ package orchestre.test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import orchestre.model.ClassMetier;
-import orchestre.model.Guitariste;
+import orchestre.model.IMusicien;
 import orchestre.model.Pianiste;
 
 public class Test {
 
-	/*@Autowired
-	Guitariste guitariste;
+	@Autowired
+	IMusicien guitariste;
 	
 	@Autowired
-	Pianiste pianiste;*/
+	Pianiste pianiste;
 	
 	@Autowired
 	ClassMetier c;
@@ -23,11 +23,15 @@ public class Test {
 	//	Pianiste p = (Pianiste) ctx.getBean("pianiste");
 		
 		
-		//guitariste.jouer(); 
+		guitariste.jouer(); 
 		//pianiste.jouer();
 	
+		//guitariste.toString();
+		//c.demo();
+
 		
-		System.out.println(c);
+		//c.demo2(true);
+		//c.demo2(false);
 		
 	}
 

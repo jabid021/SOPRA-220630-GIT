@@ -2,7 +2,7 @@ package orchestre.test;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import orchestre.model.ClassMetier;
+import orchestre.model.IMusicien;
 
 public class TestAOP {
 
@@ -14,13 +14,12 @@ public class TestAOP {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:application-context.xml");
 
 		//ClassMetier c = (ClassMetier) ctx.getBean("classMetier");
-		//Recup un guitariste g ctx.getBean
-		
+		IMusicien g = (IMusicien) ctx.getBean("guitariste");
 		//c.demo();
 		
 		//c.demo2(false);
 		
-		System.out.println(g);
+		g.toString();
 		
 		System.out.println("Fin d'app");
 		ctx.close();

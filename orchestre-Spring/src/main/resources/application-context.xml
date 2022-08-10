@@ -13,12 +13,19 @@
         http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-
+	<!--   <bean id="guitare" class="orchestre.model.Guitare" />
+	<bean id="guitariste" class="orchestre.model.Guitariste"> 
+		<property name="instrument" ref="guitare"></property></bean>
+		
 	<bean id="classMetier" class="orchestre.model.ClassMetier" />
 
-	<bean id="aspectDemo" class="orchestre.aspect.AspectDemo" />
 
-	<aop:config>
+
+	<bean id="aspectDemo" class="orchestre.aspect.AspectDemo" />-->
+	
+	
+
+	<!-- <aop:config>
 	
 		<aop:pointcut expression="execution(public void orchestre.model.ClassMetier.demo())" id="demoPointCut"/>
 		<aop:pointcut expression="execution(public String orchestre.model.ClassMetier.demo2(boolean))" id="demo2PointCut"/>
@@ -26,6 +33,7 @@
 		<aop:aspect id="monAspect" ref="aspectDemo">
 			<aop:before method="lancerAvantDemo" pointcut-ref="demoPointCut" />
 			<aop:after method="lancerApresDemo" pointcut-ref="demoPointCut" />
+			<aop:after-returning method="interceptToString" returning="sortie" pointcut="execution(public String orchestre.model.Guitariste.toString())" />
 			<aop:around method="lancerAutoursDemo" pointcut-ref="demoPointCut" />
 			<aop:after-returning method="lancerDemo2Succes" returning="varRetour" pointcut-ref="demo2PointCut"/>
 			<aop:after-throwing method="lancerDemo2Echec" pointcut-ref="demo2PointCut"/>
@@ -36,7 +44,7 @@
 
 	</aop:config>
 
-
+ -->
 
 	<!-- <bean id="guitare" class="orchestre.model.Guitare" /> Guitare guitare 
 		= new Guitare(); <bean id="piano" class="orchestre.model.Piano" /> Piano 
@@ -45,6 +53,7 @@
 		= new Guitare(); Guitariste guitariste = new Guitariste(); guitariste.setInstrument(guitare); 
 		<bean id="pianiste" class="orchestre.model.Pianiste"> <property name="instrument" 
 		ref="piano"></property> </bean> <context:component-scan base-package="orchestre.model"/> -->
+
 </beans>
 
 

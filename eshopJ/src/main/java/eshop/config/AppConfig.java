@@ -1,19 +1,14 @@
-package orchestre.config;
+package eshop.config;
 
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -22,35 +17,28 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-
-//Dans un projet Spring core, pas besoin de scan model, aspect seulement si on a des aspects
-@ComponentScan({"orchestre.model","orchestre.aspect","orchestre.dao"})
-//Pas besoin de  @EnableAspectJAutoProxy si vous ne faites pas d'aspect vous meme !
-@EnableAspectJAutoProxy
+@ComponentScan("eshop.dao")
 @EnableTransactionManagement
-@PropertySource("classpath:infos.properties")
 public class AppConfig {
 
-	@Autowired
-	private Environment env;
 
 	@Bean
 	public BasicDataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl(env.getProperty("sql.url"));
+		dataSource.setUrl("jdbc:mysql://localhost:3306/eshop");
 		dataSource.setUsername("root");
 		dataSource.setPassword("");
 		dataSource.setMaxTotal(10);
 		return dataSource;
 	}
 
-	@Bean  	
+	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(BasicDataSource dataSource) {
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		emf.setDataSource(dataSource);
-		emf.setPackagesToScan("orchestre.model");
+		emf.setPackagesToScan("eshop.model");
 		emf.setJpaVendorAdapter(vendorAdapter);
 		emf.setJpaProperties(this.hibernateProperties());
 		return emf;

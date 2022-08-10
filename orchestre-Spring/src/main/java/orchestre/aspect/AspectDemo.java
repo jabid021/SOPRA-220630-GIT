@@ -23,12 +23,18 @@ public class AspectDemo {
 	
 	
 
-	public void lancerDemo2Succes(String result) 
+	public void lancerDemo2Succes(String varRetour) 
 	{
-		System.out.println("Se lance apres succes, msg : "+result);
+		System.out.println("Se lance apres succes, msg : "+varRetour);
 	}
 	public void lancerDemo2Echec() 
 	{
 		System.out.println("Se lance apres echec");
+	}
+	
+	
+	public void interceptToString() 
+	{
+		System.out.println("Se lance apres un toString Guitariste !");
 	}
 }

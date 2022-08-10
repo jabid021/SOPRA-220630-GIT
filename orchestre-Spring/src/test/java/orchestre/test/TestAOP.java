@@ -13,10 +13,16 @@ public class TestAOP {
 		
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:application-context.xml");
 
-		ClassMetier c = (ClassMetier) ctx.getBean("classMetier");
+		//ClassMetier c = (ClassMetier) ctx.getBean("classMetier");
+		//Recup un guitariste g ctx.getBean
 		
-		System.out.println(c);
+		//c.demo();
 		
+		//c.demo2(false);
+		
+		System.out.println(g);
+		
+		System.out.println("Fin d'app");
 		ctx.close();
 	}
 

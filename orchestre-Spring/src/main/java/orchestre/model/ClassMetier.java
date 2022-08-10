@@ -9,13 +9,13 @@ public class ClassMetier {
 	
 	
 	
-	public String demo2(boolean plante) throws Exception 
+	public String demo2(boolean plante) throws RuntimeException 
 	{
 		System.out.println("---Traitement de la méthode metier 2----");
 		
 		if(plante==true) 
 		{
-			throw new Exception("la methode plante !");
+			throw new RuntimeException("la methode plante !");
 		}
 		return "un String qu'on retourne !";
 	}

@@ -2,7 +2,7 @@
 	pageEncoding="utf-8"%>
 	<%@ page import="java.util.List" %>
 	<%@ page import="eshop.model.Produit" %>
-	<%@ page import="orchestre.context.Singleton" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +26,7 @@
 		
 		<%
 		//MVC => Model (DAO+Model) - Vue (Affichage) - Controller() : 
-		List<Produit> produits = Singleton.getInstance().getDaoProduit().findAll();
+	/*	List<Produit> produits = Singleton.getInstance().getDaoProduit().findAll();
 		
 		for(Produit p : produits)
 		{
@@ -36,7 +36,7 @@
 			out.println("<th>"+p.getPrix()+"</th>");
 			out.println("<th>"+p.getFournisseur().getPrenom()+"</th>");
 			out.println("</tr>");
-		}
+		}*/
 		
 		
 		%>

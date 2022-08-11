@@ -26,7 +26,7 @@ public class Test {
 	public void run(String[] args) {
 
 		
-		List<Produit> produits = daoProduit.findAll();
+		/*List<Produit> produits = daoProduit.findAll();
 		
 		for(Produit p : produits) {System.out.println(p);}
 		
@@ -34,7 +34,9 @@ public class Test {
 		
 		c=daoPersonne.save(c);
 		
-		System.out.println(c);
+		System.out.println(c);*/
+		
+		System.out.println(daoProduit.findByLibelleRessemble("a"));
 	}
 
 }

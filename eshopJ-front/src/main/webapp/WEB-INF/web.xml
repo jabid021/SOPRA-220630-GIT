@@ -8,10 +8,21 @@
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 
+	<!-- <listener> <listener-class>eshop.listener.StartListener</listener-class> 
+		</listener> -->
+
 	<listener>
-		<listener-class>eshop.listener.StartListener</listener-class>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>eshop.config.AppConfig</param-value>
+	</context-param>
 
 	<jsp-config>
 		<jsp-property-group>
@@ -19,12 +30,9 @@
 			<include-prelude>/libs.jsp</include-prelude>
 		</jsp-property-group>
 
-	
-	<!--	<jsp-property-group>
-			<url-pattern>*.jsp</url-pattern>
-			<include-coda>/footer.jsp</include-coda>
-		</jsp-property-group>
-	-->
+
+		<!-- <jsp-property-group> <url-pattern>*.jsp</url-pattern> <include-coda>/footer.jsp</include-coda> 
+			</jsp-property-group> -->
 	</jsp-config>
 
 

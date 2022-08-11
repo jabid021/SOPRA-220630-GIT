@@ -6,6 +6,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.junit.Test;
@@ -44,12 +46,12 @@ public class DAOProduitTest {
 
 		//Arrange
 		Fournisseur f = new Fournisseur("nom", "prenom", "societe");
-		f=(Fournisseur) daoPersonne.save(f);
+		daoPersonne.save(f);
 		Produit p = new Produit("lib", 1, f);
 		Produit p2;
 		//Act
 		p=daoProduit.save(p);
-		p2 = daoProduit.findById(p.getId());
+		p2 = daoProduit.findById(p.getId()).get();
 		//Assert
 		if(p2==null) {fail();}
 		else 
@@ -67,12 +69,12 @@ public class DAOProduitTest {
 	{
 		//Arrange
 		Fournisseur f = new Fournisseur("nom", "prenom", "societe");
-		f=(Fournisseur) daoPersonne.save(f);
+		daoPersonne.save(f);
 		Produit p = new Produit("lib", 1, f);
-		p=daoProduit.save(p);
+		daoProduit.save(p);
 		Produit p2;
 		//Act
-		p2 = daoProduit.findById(p.getId());
+		p2 = daoProduit.findById(p.getId()).get();
 		//Assert
 		if(p2==null) {fail();}
 
@@ -83,16 +85,17 @@ public class DAOProduitTest {
 	{
 		//Arrange
 		Fournisseur f = new Fournisseur("nom", "prenom", "societe");
-		f=(Fournisseur) daoPersonne.save(f);
+		daoPersonne.save(f);
 		Produit p = new Produit("lib", 1, f);
-		p=daoProduit.save(p);
+		daoProduit.save(p);
 		Produit p2;
 		//Act
 
-		daoProduit.delete(p.getId());
-		p2=daoProduit.findById(p.getId());
+		daoProduit.deleteById(p.getId());
+		
+	
 		//Assert
-		assertNull(p2);
+		if(daoProduit.findById(p.getId()).isPresent()) {fail();}
 
 
 	}

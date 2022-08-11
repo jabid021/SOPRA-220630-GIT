@@ -37,11 +37,11 @@ public class AppConfig {
 	@Bean
 	public BasicDataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setDriverClassName(env.getProperty("sql.driver"));
 		dataSource.setUrl(env.getProperty("sql.url"));
-		dataSource.setUsername("root");
-		dataSource.setPassword("");
-		dataSource.setMaxTotal(10);
+		dataSource.setUsername(env.getProperty("sql.login"));
+		dataSource.setPassword(env.getProperty("sql.password"));
+		dataSource.setMaxTotal(Integer.parseInt(env.getProperty("sql.total")));
 		return dataSource;
 	}
 
@@ -58,10 +58,10 @@ public class AppConfig {
 
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
-		properties.setProperty("hibernate.hbm2ddl.auto", "update");
-		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
-		properties.setProperty("hibernate.show_sql", "true");
-		properties.setProperty("hibernate.format_sql", "true");
+		properties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.mode"));
+		properties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
+		properties.setProperty("hibernate.show_sql", env.getProperty("hibernate.showsql"));
+		properties.setProperty("hibernate.format_sql", env.getProperty("hibernate.showsql"));
 		return properties;
 	}
 	

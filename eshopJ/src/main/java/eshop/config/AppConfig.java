@@ -5,10 +5,13 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -19,21 +22,25 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @ComponentScan("eshop.dao")
 @EnableTransactionManagement
+@PropertySource("classpath:infos.properties")
 public class AppConfig {
 
+
+	@Autowired
+	private Environment env;
 
 	@Bean
 	public BasicDataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/eshop");
-		dataSource.setUsername("root");
-		dataSource.setPassword("");
-		dataSource.setMaxTotal(10);
+		dataSource.setDriverClassName(env.getProperty("sql.driver"));
+		dataSource.setUrl(env.getProperty("sql.url"));
+		dataSource.setUsername(env.getProperty("sql.login"));
+		dataSource.setPassword(env.getProperty("sql.password"));
+		dataSource.setMaxTotal(Integer.parseInt(env.getProperty("sql.total")));
 		return dataSource;
 	}
 
-	@Bean
+	@Bean  	
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(BasicDataSource dataSource) {
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -46,10 +53,10 @@ public class AppConfig {
 
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
-		properties.setProperty("hibernate.hbm2ddl.auto", "update");
-		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
-		properties.setProperty("hibernate.show_sql", "true");
-		properties.setProperty("hibernate.format_sql", "true");
+		properties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.mode"));
+		properties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
+		properties.setProperty("hibernate.show_sql", env.getProperty("hibernate.showsql"));
+		properties.setProperty("hibernate.format_sql", env.getProperty("hibernate.showsql"));
 		return properties;
 	}
 	
@@ -66,10 +73,6 @@ public class AppConfig {
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
 	return new PersistenceExceptionTranslationPostProcessor();
 	}
-
-
-
-
 
 
 }

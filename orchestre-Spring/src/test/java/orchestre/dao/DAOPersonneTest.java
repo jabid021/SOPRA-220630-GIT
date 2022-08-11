@@ -3,12 +3,13 @@ package orchestre.dao;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -35,8 +36,8 @@ public class DAOPersonneTest {
 		Personne p2;
 		//Act
 		p=daoPersonne.save(p);
-		p2 = daoPersonne.findById(p.getId()); 
-		
+		Optional<Personne> op2 = daoPersonne.findById(p.getId()); 
+		p2 = op2.get();
 		//Assert
 		if(p2==null) 
 		{

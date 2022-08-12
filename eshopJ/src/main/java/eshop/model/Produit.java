@@ -1,6 +1,7 @@
 package eshop.model;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,32 +14,32 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="product")
+@Table(name = "product")
 public class Produit {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column(name="label",length = 20, nullable = false)
+
+	@Column(name = "label", length = 20, nullable = false)
 	private String libelle;
-	
-	@Column(name="price",columnDefinition = "DECIMAL(6,2)", nullable = false)
+
+	@Column(name = "price", nullable = false)
 	private double prix;
-	
+
 	@ManyToOne
-	@JoinColumn(name="vendeur")
+	@JoinColumn(name = "vendeur")
 	private Fournisseur fournisseur;
-	
+
 	@OneToMany(mappedBy = "produit")
 	private List<Achat> achats;
-	
+
 	public Produit() {
 	}
 
-	public Produit(String libelle, double prix,Fournisseur fournisseur) {
+	public Produit(String libelle, double prix, Fournisseur fournisseur) {
 		this.libelle = libelle;
-		this.fournisseur=fournisseur;
+		this.fournisseur = fournisseur;
 		this.prix = prix;
 	}
 
@@ -66,7 +67,6 @@ public class Produit {
 		this.prix = prix;
 	}
 
-	
 	public Fournisseur getFournisseur() {
 		return fournisseur;
 	}
@@ -75,7 +75,6 @@ public class Produit {
 		this.fournisseur = fournisseur;
 	}
 
-	
 	public List<Achat> getAchats() {
 		return achats;
 	}
@@ -89,6 +88,22 @@ public class Produit {
 		return "Produit [id=" + id + ", libelle=" + libelle + ", prix=" + prix + ", fournisseur=" + fournisseur + "]";
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produit other = (Produit) obj;
+		return Objects.equals(id, other.id);
+	}
 	
-	
+
 }

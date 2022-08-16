@@ -46,6 +46,19 @@ public class ProduitService {
 		return produitRepo.save(produit);
 	}
 
+	public Produit update(Produit produit) {
+		if (produit.getLibelle() == null || produit.getLibelle().isEmpty()) {
+			throw new ProduitException("libelle obligatoire");
+		}
+		if (produit.getPrix() <= 0) {
+			throw new ProduitException("prix negatif ou nul");
+		}
+		Produit produitEnBase = getById(produit.getId());
+		produitEnBase.setLibelle(produit.getLibelle());
+		produitEnBase.setPrix(produit.getPrix());
+		return produitRepo.save(produitEnBase);
+	}
+
 	public void delete(Produit produit) {
 		achatRepo.setNullToProduitByProduit(produit);
 		// achatRepo.deleteByProduit(produit);

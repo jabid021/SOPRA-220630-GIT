@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "product")
@@ -33,6 +34,9 @@ public class Produit {
 
 	@OneToMany(mappedBy = "produit")
 	private List<Achat> achats;
+
+	@Version
+	private int version;
 
 	public Produit() {
 	}
@@ -83,6 +87,14 @@ public class Produit {
 		this.achats = achats;
 	}
 
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 	@Override
 	public String toString() {
 		return "Produit [id=" + id + ", libelle=" + libelle + ", prix=" + prix + ", fournisseur=" + fournisseur + "]";
@@ -104,6 +116,5 @@ public class Produit {
 		Produit other = (Produit) obj;
 		return Objects.equals(id, other.id);
 	}
-	
 
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="base" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +28,7 @@
 				<th>libellé</th>
 				<th>prix</th>
 				<th></th>
+				<th></th>
 			</thead>
 			<tbody>
 				<c:forEach var="p" items="${produits}">
@@ -34,18 +36,17 @@
 						<td>${p.id}</td>
 						<td>${p.libelle}</td>
 						<td>${p.prix}</td>
-						<td><a href="produit/delete?id=${p.id}"
+						<td><a href="${base}/produit/delete?id=${p.id}"
 							class="btn btn-outline-danger">supprimer</a></td>
-						<td>
-							modifier
-						</td>
+						<td><a href="${base}/produit/edit?id=${p.id}"
+							class="btn btn-outline-primary">modifier</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		
-		nouveau produit
+
+		<a href="${base}/produit/add" class="btn btn-link">nouveau produit</a>
 	</div>
-	
+
 </body>
 </html>

@@ -9,8 +9,9 @@ import org.springframework.data.repository.query.Param;
 import eshop.model.Fournisseur;
 import eshop.model.Personne;
 
-public interface IDAOPersonne extends JpaRepository<Personne,Integer> {
+public interface IDAOPersonne extends JpaRepository<Personne, Integer> {
 
 	@Query("from Fournisseur")
 	public List<Fournisseur> findAllFournisseur();
+
 }

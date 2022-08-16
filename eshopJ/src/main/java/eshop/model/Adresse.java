@@ -6,19 +6,20 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Adresse {
 
-	@Column(name="number",length = 8)
+	@Column(name = "number", length = 8)
 	private String numero;
-	
-	@Column(name="street",length = 35)
+
+	@Column(name = "street", length = 35)
 	private String voie;
-	
-	@Column(name="pc",length = 12)
+
+	@Column(name = "pc", length = 12)
 	private String cp;
-	
-	@Column(name="city",length = 50)
+
+	@Column(name = "city", length = 50)
 	private String ville;
-	
-	public Adresse() {}
+
+	public Adresse() {
+	}
 
 	public Adresse(String numero, String voie, String cp, String ville) {
 		this.numero = numero;
@@ -31,9 +32,41 @@ public class Adresse {
 	public String toString() {
 		return "Adresse [numero=" + numero + ", voie=" + voie + ", cp=" + cp + ", ville=" + ville + "]";
 	}
-	
-	
-	
-	
-	
+
+	public String getAdresse() {
+		return numero + " " + voie + "\n" + cp + " " + ville;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getVoie() {
+		return voie;
+	}
+
+	public void setVoie(String voie) {
+		this.voie = voie;
+	}
+
+	public String getCp() {
+		return cp;
+	}
+
+	public void setCp(String cp) {
+		this.cp = cp;
+	}
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
 }

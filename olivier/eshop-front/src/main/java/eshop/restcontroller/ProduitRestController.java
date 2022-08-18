@@ -32,6 +32,7 @@ import eshop.model.Produit;
 import eshop.model.jsonview.Base;
 import eshop.model.jsonview.JsonViews;
 import eshop.model.jsonview.ProduitWithFournisseur;
+import eshop.service.FournisseurService;
 import eshop.service.ProduitService;
 
 @RestController
@@ -40,6 +41,8 @@ public class ProduitRestController {
 
 	@Autowired
 	private ProduitService produitService;
+	@Autowired
+	private FournisseurService fournisseurService;
 
 	@GetMapping("")
 	@JsonView(JsonViews.ProduitWithFournisseur.class)
@@ -50,8 +53,8 @@ public class ProduitRestController {
 	@GetMapping("/{id}")
 	@JsonView(JsonViews.ProduitWithFournisseur.class)
 	public Produit getById(@PathVariable Integer id) {
-		//try {
-			return produitService.getById(id);
+		// try {
+		return produitService.getById(id);
 //		} catch (ProduitException ex) {
 //			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 //		}
@@ -86,7 +89,13 @@ public class ProduitRestController {
 		Produit produit = produitService.getById(id);
 		fields.forEach((k, v) -> {
 			if (k.equals("fournisseur")) {
-
+				if (v == null) {
+					produit.setFournisseur(null);
+				} else {
+					System.out.println(v);
+					Map<String, Object> map = (Map<String, Object>) v;
+					produit.setFournisseur(fournisseurService.getById((Integer) map.get("id")));
+				}
 			} else {
 				Field field = ReflectionUtils.findField(Produit.class, k);
 				ReflectionUtils.makeAccessible(field);

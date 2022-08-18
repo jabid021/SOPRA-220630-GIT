@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -35,7 +36,10 @@ public class FournisseurRestController {
 
 	@JsonView(JsonViews.FournisseurWithProduits.class)
 	@GetMapping("/{id}/produits")
-	public Fournisseur getByIdWithProduit(@PathVariable Integer id) {
+	public Fournisseur getByIdWithProduit(@PathVariable Integer id,
+			@RequestParam(name = "var", required = false, defaultValue = "toto") String var) {
+
+		System.out.println(var);
 		return fournisseurService.getByIdWithProduits(id);
 	}
 

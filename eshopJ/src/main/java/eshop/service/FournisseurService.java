@@ -27,6 +27,10 @@ public class FournisseurService {
 		return fournisseurRepo.findById(id).orElseThrow(FournisseurException::new);
 	}
 
+	public Fournisseur getByIdWithProduits(Integer id) {
+		return fournisseurRepo.findByIdWithProduit(id).orElseThrow(FournisseurException::new);
+	}
+
 	public Fournisseur create(Fournisseur fournisseur) {
 		return fournisseurRepo.save(fournisseur);
 	}

@@ -3,18 +3,22 @@ package eshop.model;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import eshop.model.jsonview.JsonViews;
+
 @Embeddable
 public class Adresse {
-
+	@JsonView(JsonViews.Base.class)
 	@Column(name = "number", length = 8)
 	private String numero;
-
+	@JsonView(JsonViews.Base.class)
 	@Column(name = "street", length = 35)
 	private String voie;
-
+	@JsonView(JsonViews.Base.class)
 	@Column(name = "pc", length = 12)
 	private String cp;
-
+	@JsonView(JsonViews.Base.class)
 	@Column(name = "city", length = 50)
 	private String ville;
 

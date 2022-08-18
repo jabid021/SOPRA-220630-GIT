@@ -3,6 +3,8 @@ package eshop.config;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
+import javax.validation.Validation;
+import javax.validation.Validator;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +25,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @PropertySource("classpath:infos.properties")
 @EnableJpaRepositories("eshop.dao")
-@ComponentScan(basePackages = {"eshop.service"})
+@ComponentScan(basePackages = { "eshop.service" })
 public class AppConfig {
-
 
 	@Autowired
 	private Environment env;
+
+	@Bean
+	public Validator validator() {
+		return Validation.buildDefaultValidatorFactory().getValidator();
+	}
 
 	@Bean
 	public BasicDataSource dataSource() {
@@ -41,7 +47,7 @@ public class AppConfig {
 		return dataSource;
 	}
 
-	@Bean  	
+	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(BasicDataSource dataSource) {
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -60,20 +66,17 @@ public class AppConfig {
 		properties.setProperty("hibernate.format_sql", env.getProperty("hibernate.showsql"));
 		return properties;
 	}
-	
-	
+
 	@Bean
 	public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
-	JpaTransactionManager transactionManager = new JpaTransactionManager();
-	transactionManager.setEntityManagerFactory(emf);
-	return transactionManager;
+		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(emf);
+		return transactionManager;
 	}
 
-	
 	@Bean
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
-	return new PersistenceExceptionTranslationPostProcessor();
+		return new PersistenceExceptionTranslationPostProcessor();
 	}
-
 
 }

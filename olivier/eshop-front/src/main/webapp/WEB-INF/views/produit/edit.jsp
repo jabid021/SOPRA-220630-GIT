@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="base" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -22,25 +23,41 @@
 <body>
 	<div class="container">
 		<h1>edition produit</h1>
-		<form action="${base}/produit/save" method="post">
+		<form:form action="${base}/produit/save" method="post"
+			modelAttribute="produit">
 			<div class="form-group">
-				<label for="id">id</label> <input id="id" name="id"
-					class="form-control" value="${produit.id}"
-					placeholder="generation automatique" readonly="readonly">
+				<form:label path="id">id:</form:label>
+				<form:input path="id" cssClass="form-control"
+					placeholder="generation automatique" readonly="readonly" />
 			</div>
 			<div class="form-group">
-				<label for="libelle">libellé</label> <input id="libelle"
-					name="libelle" class="form-control" value="${produit.libelle}">
+				<form:label path="libelle">libelle:</form:label>
+				<form:input path="libelle" cssClass="form-control" />
+				<form:errors path="libelle">
+					<div class="alert alert-danger">libelle</div>
+				</form:errors>
 			</div>
 			<div class="form-group">
-				<label for="prix">prix</label> <input type="number" id="prix"
-					name="prix" class="form-control" value="${produit.prix}">
+				<form:label path="prix">prix:</form:label>
+				<form:input path="prix" cssClass="form-control" type="number"
+					cssErrorClass="form-control" />
+				<form:errors path="prix" cssClass="alert alert-danger" element="div"></form:errors>
+			</div>
+			<div class="form-group">
+				<form:label path="fournisseur.id">fournisseur:</form:label>
+				<%-- 				<form:select path="fournisseur.id" items="${fournisseurs}" itemValue="id" --%>
+				<%-- 					itemLabel="infos" cssClass="form-control"></form:select> --%>
+				<form:select path="fournisseur.id" cssClass="form-control">
+					<form:option value="">pas de fournisseur</form:option>
+					<form:options items="${fournisseurs}" itemValue="id"
+						itemLabel="infos" />
+				</form:select>
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-outline-success">enregistrer</button>
 				<a href="${base}/produit" class="btn btn-outline-warning">annuler</a>
 			</div>
-		</form>
+		</form:form>
 	</div>
 </body>
 </html>

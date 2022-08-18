@@ -27,6 +27,7 @@
 				<th>id</th>
 				<th>libellé</th>
 				<th>prix</th>
+				<th>fournisseur</th>
 				<th></th>
 				<th></th>
 			</thead>
@@ -36,10 +37,11 @@
 						<td>${p.id}</td>
 						<td>${p.libelle}</td>
 						<td>${p.prix}</td>
-						<td><a href="${base}/produit/delete?id=${p.id}"
-							class="btn btn-outline-danger">supprimer</a></td>
+						<td>${p.fournisseur.infos}</td>
 						<td><a href="${base}/produit/edit?id=${p.id}"
 							class="btn btn-outline-primary">modifier</a></td>
+						<td><a href="${base}/produit/delete?id=${p.id}"
+							class="btn btn-outline-danger">supprimer</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

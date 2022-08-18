@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,26 +14,49 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.springframework.data.web.JsonPath;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import eshop.model.jsonview.Base;
+import eshop.model.jsonview.JsonViews;
+import eshop.model.jsonview.ProduitWithFournisseur;
 
 @Entity
 @Table(name = "product")
 public class Produit {
 
+	@JsonView(JsonViews.Base.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@JsonView(JsonViews.Base.class)
+	@NotEmpty
+	@Size(max = 20)
+	// @Pattern
 	@Column(name = "label", length = 20, nullable = false)
 	private String libelle;
 
+	@JsonView(JsonViews.Base.class)
+	@Min(value = 0, message = "message sur min")
 	@Column(name = "price", nullable = false)
 	private double prix;
 
+	@JsonView({ JsonViews.ProduitWithFournisseur.class, JsonViews.ProduitWithAchatsAndFournisseur.class })
 	@ManyToOne
 	@JoinColumn(name = "vendeur")
 	private Fournisseur fournisseur;
 
-	@OneToMany(mappedBy = "produit")
+	@JsonView({ JsonViews.ProduitWithAchats.class, JsonViews.ProduitWithAchatsAndFournisseur.class })
+	@OneToMany(mappedBy = "produit", fetch = FetchType.LAZY)
 	private List<Achat> achats;
 
 	@Version

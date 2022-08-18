@@ -1,8 +1,10 @@
 package eshop.service;
 
 import java.util.List;
+import java.util.Set;
 
-import javax.sound.midi.SysexMessage;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ import eshop.model.Produit;
 
 @Service
 public class ProduitService {
+
+	@Autowired
+	private Validator validator;
 
 	@Autowired
 	private IDAOProduit produitRepo;
@@ -37,11 +42,10 @@ public class ProduitService {
 	}
 
 	public Produit create(Produit produit) {
-		if (produit.getLibelle() == null || produit.getLibelle().isEmpty()) {
-			throw new ProduitException("libelle obligatoire");
-		}
-		if (produit.getPrix() <= 0) {
-			throw new ProduitException("prix negatif ou nul");
+		Set<ConstraintViolation<Produit>> violations = validator.validate(produit);
+		System.out.println(violations);
+		if (!violations.isEmpty()) {
+			throw new ProduitException();
 		}
 		return produitRepo.save(produit);
 	}
@@ -56,6 +60,7 @@ public class ProduitService {
 		Produit produitEnBase = getById(produit.getId());
 		produitEnBase.setLibelle(produit.getLibelle());
 		produitEnBase.setPrix(produit.getPrix());
+		produitEnBase.setFournisseur(produit.getFournisseur());
 		return produitRepo.save(produitEnBase);
 	}
 
